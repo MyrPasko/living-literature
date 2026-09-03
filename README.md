@@ -2,7 +2,7 @@
 
 Living Literature is a local-first research project for short cinematic entrances into public-domain literature. The work should lead viewers toward reading rather than replace the source text.
 
-The repository currently proves only the Slice 001 environment boundary: a native Apple Silicon Python environment can load MLX and reach the help surface of Apple's Wan2.1 text-to-video example. `Wan2.1-T2V-1.3B` remains a feasibility candidate, not an accepted production model.
+The repository now proves the Slice 002 feasibility boundary: the exact pinned Wan2.1-T2V-1.3B candidate generated the fixed benchmark locally and reproduced a byte-identical result under OS-enforced network denial. `Wan2.1-T2V-1.3B` remains a feasibility candidate, not an accepted production model.
 
 ## Recreate the Environment
 
@@ -28,10 +28,23 @@ The exact Python dependency graph is stored in `uv.lock`. The Apple example is a
 Three operations must remain distinct:
 
 1. Dependency and source download is allowed during controlled environment setup.
-2. Model-weight download is a separate, explicit Slice 002 operation.
-3. Model inference is local-only and is not executed in Slice 001.
+2. Model-weight download is a separate, explicit operation with exact revision and file manifests.
+3. Model inference is local-only. The Slice 002 offline repeat combined library offline flags, local-only cache resolution, and macOS network denial.
 
-No API key or cloud generation service belongs in the inference path. See `docs/local-video-environment.md` for the offline flags and the evidence boundary.
+No API key or cloud generation service belongs in the inference path. See `docs/local-video-environment.md` for the environment boundary and `docs/slice-002-wan-1.3b-benchmark.md` for the measured inference evidence.
+
+## Reproduce the Slice 002 Benchmark
+
+The model revision, file set, prompt, and parameters are fixed in tracked manifests. The runtime cache and generated videos are intentionally ignored.
+
+```sh
+.venv/bin/python scripts/download-wan-1.3b.py
+./scripts/run-slice-002-benchmark.sh online
+./scripts/run-slice-002-benchmark.sh offline
+.venv/bin/python scripts/verify-slice-002.py
+```
+
+The offline command uses macOS `sandbox-exec` to deny network access. Do not edit the runner while either long-running command is active.
 
 ## Project Authority
 

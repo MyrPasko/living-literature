@@ -1,0 +1,99 @@
+{
+  "benchmark_id": "slice-002-wan-1.3b-fixed-seed",
+  "completed_at_utc": "2026-09-03T17:06:15Z",
+  "model": {
+    "repository": "Wan-AI/Wan2.1-T2V-1.3B",
+    "revision": "37ec512624d61f7aa208f7ea8140a131f93afc9a",
+    "license": "Apache-2.0",
+    "apple_implementation_revision": "796f5b53cab69a3d48a44233ce21aae889e94a08",
+    "production_model_accepted": false
+  },
+  "parameters_source": "benchmarks/slice-002-wan-1.3b.json",
+  "runs": [
+    {
+      "run_id": "online-pinned-baseline",
+      "network_mode": "online-capable; every model request pinned to the exact revision",
+      "inference_exit_code": 0,
+      "wrapper_exit_code": 2,
+      "wrapper_closeout": "recovered after the runner was edited while its shell was active",
+      "inference_duration_seconds": 1989.82,
+      "mlx_peak_memory_gb": 25.693,
+      "maximum_resident_set_bytes": 39437451264,
+      "peak_process_footprint_bytes": 67432368168,
+      "minimum_observed_memory_free_percent": 57,
+      "maximum_observed_swap_mb": 0.0,
+      "thermal_or_performance_warning_observed": false,
+      "output": "outputs/slice-002/wan-1.3b-online-seed-42.mp4",
+      "output_sha256": "9984555b3918a56c0ad8f4043b234cdbec2ba15bbaffc46e49eddae86838390f",
+      "output_size_bytes": 615420
+    },
+    {
+      "run_id": "offline-network-denied-repeat",
+      "network_mode": "HF offline flags, local_files_only, and macOS sandbox deny network",
+      "network_denial_preflight": "pass; loopback socket binding was denied",
+      "inference_exit_code": 0,
+      "wrapper_exit_code": 0,
+      "wrapper_closeout": "normal",
+      "wall_duration_seconds": 2222,
+      "inference_duration_seconds": 2200.93,
+      "mlx_peak_memory_gb": 25.693,
+      "maximum_resident_set_bytes": 39435894784,
+      "peak_process_footprint_bytes": 68272064576,
+      "minimum_observed_memory_free_percent": 56,
+      "maximum_observed_swap_mb": 0.0,
+      "thermal_or_performance_warning_observed": false,
+      "output": "outputs/slice-002/wan-1.3b-offline-seed-42.mp4",
+      "output_sha256": "9984555b3918a56c0ad8f4043b234cdbec2ba15bbaffc46e49eddae86838390f",
+      "output_size_bytes": 615420
+    }
+  ],
+  "media": {
+    "codec": "h264",
+    "width": 832,
+    "height": 480,
+    "frames": 81,
+    "frames_per_second": 16,
+    "duration_seconds": 5.0625,
+    "full_decode": "pass",
+    "online_offline_outputs_byte_identical": true
+  },
+  "quality_review": {
+    "method": "normal-speed playback plus first, midpoint, last, and ten evenly spaced frame samples",
+    "prompt_subject": {
+      "status": "partial",
+      "observation": "A stable black sailing vessel is present, but its two-masted silhouette is generic rather than unmistakably Bronze Age Greek."
+    },
+    "sea_and_time_of_day": {
+      "status": "pass",
+      "observation": "The sea is dark wine-purple and the scene reads as pre-dawn."
+    },
+    "weather_and_mood": {
+      "status": "pass",
+      "observation": "Heavy clouds and restrained cinematic lighting are consistent throughout."
+    },
+    "motion": {
+      "status": "partial",
+      "observation": "Water movement and the slow camera approach are coherent; requested wind-driven sail movement is subtle."
+    },
+    "temporal_coherence": {
+      "status": "pass",
+      "observation": "The hull, sails, horizon, and composition remain stable without abrupt morphing during playback."
+    },
+    "forbidden_content": {
+      "status": "pass",
+      "observation": "No text, watermark, or obvious modern object is visible."
+    },
+    "production_suitability": {
+      "status": "not-accepted",
+      "observation": "Useful feasibility control and mood draft; historical specificity and stronger directed motion require a better model or a more controllable workflow."
+    }
+  },
+  "acceptance": {
+    "playable_online_mp4": true,
+    "playable_offline_mp4_without_api_key": true,
+    "exact_parameters_and_hashes_recorded": true,
+    "runtime_and_memory_recorded": true,
+    "limitations_recorded": true,
+    "slice_002_complete": true
+  }
+}

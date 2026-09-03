@@ -1,0 +1,37 @@
+{
+  "benchmark_id": "slice-002-wan-1.3b-fixed-seed",
+  "locked_at_utc": "2026-09-03T00:00:00Z",
+  "prompt": "A black ancient Greek ship crosses a dark wine-colored sea before dawn. Bronze Age aesthetic, heavy clouds, cold wind moving the square sail, cinematic wide shot, restrained realistic motion, no text, no modern objects.",
+  "model": {
+    "repository": "Wan-AI/Wan2.1-T2V-1.3B",
+    "revision": "37ec512624d61f7aa208f7ea8140a131f93afc9a",
+    "apple_implementation_revision": "796f5b53cab69a3d48a44233ce21aae889e94a08"
+  },
+  "parameters": {
+    "model": "t2v-1.3B",
+    "width": 832,
+    "height": 480,
+    "frames": 81,
+    "steps": 50,
+    "guidance": 5.0,
+    "shift": 5.0,
+    "seed": 42,
+    "sampler": "unipc",
+    "quantization_bits": 0,
+    "teacache": 0.0,
+    "metal_cache_enabled": true,
+    "fps": 16
+  },
+  "runs": [
+    {
+      "run_id": "online-pinned-baseline",
+      "network_mode": "online-capable with every model request pinned to the exact revision",
+      "output": "outputs/slice-002/wan-1.3b-online-seed-42.mp4"
+    },
+    {
+      "run_id": "offline-network-denied-repeat",
+      "network_mode": "HF offline flags plus macOS sandbox deny network",
+      "output": "outputs/slice-002/wan-1.3b-offline-seed-42.mp4"
+    }
+  ]
+}

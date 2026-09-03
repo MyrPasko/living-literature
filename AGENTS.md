@@ -16,7 +16,7 @@ Use this file as a bootstrap only. Do not treat it as the project manual.
 - Agents are useful because their authority is limited.
 - Do not promote memory artifacts automatically after extraction.
 - All project files, plans, comments, summaries, and commit messages are written in English. Original literary quotations are exempt.
-- Model weights and inference require an explicit slice. Slice 001 permits neither.
+- Model weights and inference require an explicit slice. Slice 003 is a quality and model decision gate; it does not authorize another model download or inference.
 - No project operation may require cloud inference or an API key.
 
 ## Rule

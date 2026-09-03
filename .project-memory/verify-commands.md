@@ -17,6 +17,13 @@ version: 4
 - `ffmpeg -version`
 - `UV_CACHE_DIR=.cache/uv UV_PYTHON_INSTALL_DIR=.python uv tree --locked --depth 1`
 
+## Slice 002 Wan 1.3B Benchmark
+- `.venv/bin/python scripts/download-wan-1.3b.py`
+- `./scripts/run-slice-002-benchmark.sh online`
+- `./scripts/run-slice-002-benchmark.sh offline`
+- `.venv/bin/python scripts/verify-slice-002.py`
+- `ffprobe -v error -show_entries stream=codec_name,width,height,nb_frames,r_frame_rate,duration -show_entries format=duration,size -of json outputs/slice-002/wan-1.3b-offline-seed-42.mp4`
+
 ## Lockfile Recreation
 - `recreate_dir="$(mktemp -d /private/tmp/living-literature-lock.XXXXXX)"; UV_CACHE_DIR=.cache/uv UV_PYTHON_INSTALL_DIR=.python UV_PROJECT_ENVIRONMENT="$recreate_dir/.venv" uv sync --frozen --offline`
 
@@ -28,4 +35,6 @@ version: 4
 ## Notes
 - The MLX Metal and PyTorch MPS check must run on the actual host. A sandboxed or headless process may report no Metal device even when the host supports it.
 - The Slice 001 verifier enables Hugging Face and related offline flags before the Wan CLI help check. It does not invoke a prompt.
-- Generation, offline inference, benchmark, media validation, and rights-ledger verification are not registered until their owning slices implement them.
+- Slice 002 generation, offline inference, benchmark, and media validation are registered. Generated videos and detailed runtime artifacts remain local and Git-ignored; tracked manifests contain their hashes and measurements.
+- Run host inference only after reviewing the fixed benchmark manifest and current safety thresholds. Never edit the runner while it is active.
+- Rights-ledger verification is not registered until its owning slice implements it.

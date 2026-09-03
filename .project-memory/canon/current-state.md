@@ -1,36 +1,34 @@
 ---
 project: living-literature
-merged_baseline: slice-001-local-video-lab-complete
-active_slice: slice-002-wan-1.3b-offline-benchmark
-next_slice: slice-002-wan-1.3b-offline-benchmark
-active_risks: ["offline-inference-not-proven", "model-weight-revision-not-selected", "production-model-not-accepted", "human-publish-reviewer-unassigned"]
-verification_reality: ["native-arm64-python-3.12.13-locked", "mlx-0.32.2-metal-and-torch-mps-verified", "wan-cli-help-passed-with-offline-flags", "no-model-weights-or-inference-in-slice-001"]
+merged_baseline: slice-002-wan-1.3b-offline-benchmark-complete
+active_slice: slice-003-quality-and-model-gate
+next_slice: slice-003-quality-and-model-gate
+active_risks: ["production-model-not-accepted", "bronze-age-specificity-insufficient", "heavier-model-resource-boundary-unmeasured", "human-publish-reviewer-unassigned"]
+verification_reality: ["wan-1.3b-revision-and-four-runtime-files-pinned", "online-and-network-denied-offline-inference-passed", "outputs-byte-identical", "mlx-peak-memory-25.693-gb", "zero-swap-and-no-warning-observed"]
 authoritative_since: 2026-09-03
 ---
 
 # Current State
 
 ## Merged Baseline
-- Slice 001 is complete in the local repository.
-- Repo-local Memory Core V4 is installed without global skills, adapters, or automatic Obsidian sync.
-- A uv-managed native arm64 CPython 3.12.13 environment is locked in `uv.lock`.
-- MLX 0.32.2 imports successfully; a real Metal GPU operation and PyTorch MPS availability passed on the host.
-- FFmpeg 9.0.1_1 is installed through Homebrew at `/opt/homebrew/bin/ffmpeg`.
-- Apple's official MLX Wan2.1 example is a Git submodule pinned to `796f5b53cab69a3d48a44233ce21aae889e94a08`.
-- `txt2video.py --help` passed with offline-library flags enabled and without model resolution, weight download, or inference.
+- Slices 001 and 002 are complete in the local repository.
+- Native arm64 CPython 3.12.13, MLX 0.32.2 Metal, PyTorch 2.14.0 MPS, and FFmpeg 9.0.1 are verified.
+- Apple's MLX Wan2.1 source is pinned to `796f5b53cab69a3d48a44233ce21aae889e94a08`.
+- `Wan-AI/Wan2.1-T2V-1.3B` is pinned to `37ec512624d61f7aa208f7ea8140a131f93afc9a`; the exact four-file runtime set and license evidence are checksum-verified.
+- Online-capable and network-denied offline runs produced byte-identical 832×480, 81-frame MP4s at SHA-256 `9984555b3918a56c0ad8f4043b234cdbec2ba15bbaffc46e49eddae86838390f`.
+- Offline wall time was 2,222 seconds; MLX peak was 25.693 GB; minimum free memory was 56%; swap and warning count were zero.
 
 ## Next Slice
-- Active: `slice-002-wan-1.3b-offline-benchmark`.
-- Pin the exact `Wan-AI/Wan2.1-T2V-1.3B` model revision, download only that candidate's required files, run a declared fixed-seed benchmark, and repeat it under convincing network isolation.
+- Active: `slice-003-quality-and-model-gate`.
+- Select one next approach and define its download, resource, license, and benchmark boundary.
+- Slice 003 authorizes no new model download or inference.
 
 ## Active Risks
-- Offline model inference has not been proven.
-- No model-weight revision is selected or downloaded.
-- `Wan2.1-T2V-1.3B` is a feasibility candidate, not an accepted production model.
-- Video quality, runtime, memory behavior, thermals, and repeatability are unmeasured.
+- No production model is accepted; 1.3B lacks Bronze Age specificity and strong sail motion.
+- BigBoy's heavier-model quality, runtime, memory, swap, and thermal boundaries remain unmeasured.
 - Human editorial and legal publication review is not assigned.
 
 ## Verification Reality
-- Host verification passed for arm64 Python 3.12.13, MLX 0.32.2, Metal execution, PyTorch 2.14.0 MPS availability, FFmpeg 9.0.1, the exact Wan source revision, the offline-flagged Wan help surface, ignore rules, and tracked-artifact scanning.
-- A fresh environment was recreated from `uv.lock` with `uv sync --frozen --offline` using the populated uv cache.
-- No model file, generated media, secret, benchmark result, or inference output was created.
+- Slice 001 host and lockfile checks remain green; the Slice 002 verifier passed cache hashes, request pins, offline denial, media metadata, hashes, and full decodes.
+- Playback showed stable restrained motion and no forbidden content, with insufficient historical specificity.
+- The online wrapper closeout was recovered after a live-runner edit; offline closeout was normal. See the Slice 002 report.

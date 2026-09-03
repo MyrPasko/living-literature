@@ -20,7 +20,8 @@ kind: constraints
 
 ## Scope Control
 - Work one bounded slice at a time.
-- Do not download model weights or run inference during Slice 001.
+- Model download and inference require a slice that names the exact model, revision, file set, benchmark, and safety boundary.
+- Slice 003 is a decision gate and does not authorize a heavier-model download or inference.
 - Do not optimize before a measured baseline.
 - Do not publish automatically.
 
