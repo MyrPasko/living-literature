@@ -1,0 +1,105 @@
+{
+  "decision_id": "slice-003-quality-and-model-gate",
+  "decided_at_utc": "2026-09-03T18:09:02Z",
+  "status": "accepted_for_one_future_benchmark",
+  "production_model_accepted": false,
+  "baseline": {
+    "model_repository": "Wan-AI/Wan2.1-T2V-1.3B",
+    "model_revision": "37ec512624d61f7aa208f7ea8140a131f93afc9a",
+    "apple_implementation_revision": "796f5b53cab69a3d48a44233ce21aae889e94a08",
+    "offline_inference_seconds": 2200.93,
+    "wrapper_wall_seconds": 2222,
+    "mlx_peak_memory_gb": 25.693,
+    "peak_process_footprint_bytes": 68272064576,
+    "minimum_observed_free_memory_percent": 56,
+    "maximum_observed_swap_mb": 0.0,
+    "quality_gaps": [
+      "bronze_age_greek_specificity",
+      "directed_square_sail_motion"
+    ]
+  },
+  "selected_option": {
+    "approach": "wan2.1_t2v_14b_mlx_8bit",
+    "model_repository": "Wan-AI/Wan2.1-T2V-14B",
+    "model_revision": "a064a6c71f5be440641209c07bf2a5ce7a2ff5e4",
+    "license": "Apache-2.0",
+    "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "apple_implementation_revision": "796f5b53cab69a3d48a44233ce21aae889e94a08",
+    "required_runtime_file_count": 10,
+    "required_runtime_size_bytes": 69040541912,
+    "required_runtime_size_gib": 64.299,
+    "runtime_files": [
+      "diffusion_pytorch_model.safetensors.index.json",
+      "diffusion_pytorch_model-00001-of-00006.safetensors",
+      "diffusion_pytorch_model-00002-of-00006.safetensors",
+      "diffusion_pytorch_model-00003-of-00006.safetensors",
+      "diffusion_pytorch_model-00004-of-00006.safetensors",
+      "diffusion_pytorch_model-00005-of-00006.safetensors",
+      "diffusion_pytorch_model-00006-of-00006.safetensors",
+      "Wan2.1_VAE.pth",
+      "models_t5_umt5-xxl-enc-bf16.pth",
+      "google/umt5-xxl/tokenizer.json"
+    ],
+    "resource_estimate": {
+      "kind": "estimate_not_measurement",
+      "mlx_peak_memory_gb": {
+        "minimum": 35,
+        "maximum": 55
+      },
+      "peak_process_footprint_gb": {
+        "minimum": 75,
+        "maximum": 110
+      },
+      "inference_seconds_per_run": {
+        "minimum": 5400,
+        "maximum": 10800
+      },
+      "confidence": "low_to_medium"
+    },
+    "rationale": "Directly tests the capacity hypothesis while preserving the proven prompt, geometry, sampler, seed, model family, and pinned Apple MLX implementation. Memory headroom is a feasibility condition, not the selection reason."
+  },
+  "alternatives": [
+    {
+      "approach": "stop_local_text_to_video",
+      "disposition": "rejected_now_retained_as_slice_005_failure_outcome"
+    },
+    {
+      "approach": "wan2.1_i2v_14b_480p",
+      "model_repository": "Wan-AI/Wan2.1-I2V-14B-480P",
+      "model_revision": "6b73f84e66371cdfe870c72acd6826e1d61cf279",
+      "license": "Apache-2.0",
+      "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "required_runtime_size_bytes": 82238491725,
+      "disposition": "deferred_until_rights_cleared_historically_reviewed_input_still_exists"
+    },
+    {
+      "approach": "ltx_2_5_fast_22b_distilled",
+      "model_repository": "Lightricks/LTX-2.5",
+      "model_revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "runtime_repository": "Lightricks/ltx-desktop",
+      "runtime_revision": "68cd86c15e5fd25f56229ea63c0dbcb0338f7812",
+      "license": "LTX-2.x Community License Agreement",
+      "license_sha256": "be75acae5c99b0fb16ed6cfbf8f731e5121a729bef112d20337699407e796451",
+      "required_runtime_size_bytes": 71114917404,
+      "disposition": "deferred_for_license_and_new_runtime_integration_gate"
+    },
+    {
+      "approach": "deterministic_camera_animation_over_still",
+      "runtime_repository": "FFmpeg/FFmpeg",
+      "runtime_revision": "bf1b838f2ab88b4f8fd83443325c782ea0e0f7fa",
+      "runtime_version": "n9.0.1",
+      "installed_build_license": "GPL-3.0-or-later",
+      "required_model_weight_bytes": 0,
+      "disposition": "deferred_as_low_resource_fallback"
+    }
+  ],
+  "future_benchmark": {
+    "slice_id": "slice-005-wan-2.1-t2v-14b-benchmark",
+    "specification": "docs/slice-005-wan-2.1-t2v-14b-benchmark.md",
+    "preceded_by": "slice-004-rights-ledger-foundation",
+    "authorized_by_this_decision": false
+  },
+  "sources_accessed_at": "2026-09-03",
+  "weights_downloaded": false,
+  "inference_ran": false
+}
