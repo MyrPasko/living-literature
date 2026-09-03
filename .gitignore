@@ -1,0 +1,55 @@
+# Python and uv
+.venv/
+.python/
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+
+# Model weights and local model stores
+models/*
+!models/README.md
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.gguf
+*.onnx
+
+# Generated images, audio, and video
+outputs/*
+!outputs/README.md
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.gif
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.wav
+*.mp3
+*.m4a
+!source-packets/fixtures/**
+
+# Transient benchmark artifacts; benchmark records remain tracked
+benchmarks/artifacts/
+benchmarks/tmp/
+benchmarks/**/*.trace
+benchmarks/**/*.prof
+benchmarks/**/*.tmp
+
+# macOS metadata
+.DS_Store
+._*

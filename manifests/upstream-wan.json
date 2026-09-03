@@ -1,0 +1,13 @@
+{
+  "name": "Apple MLX Wan2.1 example",
+  "upstream_url": "https://github.com/ml-explore/mlx-examples.git",
+  "commit": "796f5b53cab69a3d48a44233ce21aae889e94a08",
+  "source_path": "video/wan2.1",
+  "integration": "pinned Git submodule with a sparse local working tree",
+  "source_license": "MIT",
+  "license_path": "third_party/mlx-examples/LICENSE",
+  "verified_on": "2026-09-03",
+  "model_candidate": "Wan-AI/Wan2.1-T2V-1.3B",
+  "model_weights_present": false,
+  "production_model_accepted": false
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Memory Distill"
+  short_description: "Extract Memory Core candidates"
+  default_prompt: "Use $memory-distill-skill to extract Memory Core candidates from the completed task artifacts."

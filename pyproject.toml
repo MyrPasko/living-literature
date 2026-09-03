@@ -1,0 +1,19 @@
+[project]
+name = "living-literature-video-lab"
+version = "0.1.0"
+description = "Local Apple Silicon feasibility environment for Living Literature video research"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "einops>=0.8.2",
+  "huggingface-hub",
+  "mlx>=0.31.0",
+  "numpy",
+  "pillow",
+  "tokenizers",
+  "torch",
+  "tqdm",
+]
+
+[tool.uv]
+package = false

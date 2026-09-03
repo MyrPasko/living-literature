@@ -1,0 +1,4 @@
+interface:
+  display_name: "Memory Retrieval"
+  short_description: "Build Memory Core context bundles"
+  default_prompt: "Use $memory-retrieval-skill to build a Memory Core context bundle for this task."
