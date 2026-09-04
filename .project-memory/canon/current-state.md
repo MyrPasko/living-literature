@@ -1,12 +1,12 @@
 ---
 project: living-literature
 merged_baseline: slice-003-quality-and-model-gate-complete
-active_slice: slice-004-rights-ledger-foundation
-next_slice: slice-004-rights-ledger-foundation
-queued_slice: slice-005-wan-2.1-t2v-14b-benchmark
+active_slice: slice-005-wan-2.1-t2v-14b-benchmark
+next_slice: slice-005-wan-2.1-t2v-14b-benchmark
+postponed_slice: slice-004-rights-ledger-foundation
 active_risks: ["production-model-not-accepted", "wan-14b-quality-gain-unproven", "wan-14b-resource-boundary-unmeasured", "human-publish-reviewer-unassigned"]
-verification_reality: ["wan-1.3b-offline-baseline-retained", "wan-14b-selected-for-one-future-benchmark", "wan-14b-current-runtime-inventory-64.299-gib", "slice-003-downloaded-no-weights-and-ran-no-inference"]
-authoritative_since: 2026-09-03
+verification_reality: ["wan-1.3b-offline-baseline-retained", "wan-14b-benchmark-authorized", "wan-14b-current-runtime-inventory-64.299-gib", "wan-14b-external-store-under-home-models"]
+authoritative_since: 2026-09-04
 ---
 
 # Current State
@@ -18,8 +18,9 @@ authoritative_since: 2026-09-03
 - Slice 003 selected T2V 14B revision `a064a6c71f5be440641209c07bf2a5ce7a2ff5e4`, 8-bit DiT, for one future benchmark. Its ten-file inventory is 64.299 GiB; no weights or inference were used.
 
 ## Next Slice
-- `slice-004-rights-ledger-foundation` is active next.
-- `slice-005-wan-2.1-t2v-14b-benchmark` is queued but requires separate download/inference authority.
+- `slice-005-wan-2.1-t2v-14b-benchmark` is active and authorized for its exact download and two-run benchmark.
+- `slice-004-rights-ledger-foundation` is postponed without renumbering or deletion.
+- New Wan 14B assets live under `~/models/huggingface/hub`; Ollama is not used for video diffusion.
 
 ## Active Risks
 - No production model is accepted.
@@ -28,5 +29,5 @@ authoritative_since: 2026-09-03
 
 ## Verification Reality
 - Slice 001 host checks and the Slice 002 verifier pass.
-- Slice 003 verified current primary-source revisions, licenses, inventories, and pinned Apple support.
+- Slice 003 verified primary-source revisions, licenses, inventories, and pinned Apple support; Slice 005 must recheck them before download.
 - All future 14B resource ranges are estimates. See the Slice 003 report and Slice 005 plan.

@@ -1,19 +1,19 @@
 ---
 project: Living Literature
 document: wan-2.1-t2v-14b-benchmark-plan
-status: planned-not-authorized
+status: active-authorized
 created: 2026-09-03
+authorized: 2026-09-04
 slice: slice-005-wan-2.1-t2v-14b-benchmark
 depends_on:
   - slice-003-quality-and-model-gate
-  - slice-004-rights-ledger-foundation
 ---
 
 # Slice 005 — Wan2.1 T2V 14B Benchmark
 
 ## Authority Boundary
 
-This document specifies exactly one future benchmark. It does **not** authorize model download or inference. Slice 005 requires separate owner authorization after Slice 004.
+The owner authorized this exact benchmark on 2026-09-04 and postponed Slice 004. This slice authorizes the declared Wan 14B download and two local inference runs. It does not authorize any other model, prompt-tuning loop, production work, or publication.
 
 No multi-model bake-off, prompt tuning, distilled checkpoint, I2V input, LTX run, or production work is part of this benchmark.
 
@@ -26,7 +26,16 @@ No multi-model bake-off, prompt tuning, distilled checkpoint, I2V input, LTX run
 - implementation: Apple `mlx-examples/video/wan2.1` at `796f5b53cab69a3d48a44233ce21aae889e94a08`;
 - implementation license: MIT.
 
-Before any future download, re-query repository metadata. Revision drift is a stop, not permission to silently substitute a newer commit.
+Before download, re-query repository metadata. Revision drift is a stop, not permission to silently substitute a newer commit.
+
+## Model Storage Boundary
+
+- Default model store: `~/models/huggingface/hub` (`/Users/myroslavpasko/models/huggingface/hub` on BigBoy).
+- Override, when explicitly needed: `LIVING_LITERATURE_MODEL_STORE` or `--model-store`.
+- The downloader records paths relative to that external store; tracked manifests do not contain the owner's absolute home path.
+- Weights remain outside the repository and cannot be staged by repository Git operations.
+- Ollama remains untouched. Its current supported model-import architectures do not include Wan video diffusion, and its model registry cannot drive the pinned Apple Wan pipeline.
+- The existing repository-local Slice 002 cache remains in place because its immutable manifest and verifier depend on that exact evidence location. This slice does not migrate it.
 
 ## Fixed Prompt and Configuration
 

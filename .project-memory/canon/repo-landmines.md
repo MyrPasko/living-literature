@@ -16,6 +16,8 @@ authoritative_since: 2026-09-03
 - Never patch a long-running shell or Python entrypoint while its process is active.
 - Slice 003 is a decision gate; it permits no new weight download or inference.
 - Stop a run at 10% free memory, 32 GiB swap, or 100 GiB free disk.
+- Slice 005 alone authorizes Wan2.1 T2V 14B revision `a064a6c71f5be440641209c07bf2a5ce7a2ff5e4`; its stricter swap stop is above 8 GiB.
+- New model caches belong under `~/models`, outside the checkout. Do not import Wan video diffusion into Ollama or migrate the immutable Slice 002 cache inside Slice 005.
 - Never use `git submodule update --remote`; the Apple source must remain at the exact approved commit.
 - The Apple example source is MIT licensed. The candidate model weights are a separate license and revision gate.
 - Do not treat library offline flags alone as proof that inference made no network calls.

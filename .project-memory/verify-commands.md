@@ -1,6 +1,6 @@
 ---
 kind: verification-commands
-version: 4
+version: 5
 ---
 
 # Verification Commands
@@ -24,6 +24,13 @@ version: 4
 - `.venv/bin/python scripts/verify-slice-002.py`
 - `ffprobe -v error -show_entries stream=codec_name,width,height,nb_frames,r_frame_rate,duration -show_entries format=duration,size -of json outputs/slice-002/wan-1.3b-offline-seed-42.mp4`
 
+## Slice 005 Wan T2V 14B Benchmark
+- `.venv/bin/python scripts/download-wan-14b.py`
+- `.venv/bin/python scripts/verify-slice-005.py --model-only`
+- `./scripts/run-slice-005-benchmark.sh online`
+- `./scripts/run-slice-005-benchmark.sh offline`
+- `.venv/bin/python scripts/verify-slice-005.py`
+
 ## Lockfile Recreation
 - `recreate_dir="$(mktemp -d /private/tmp/living-literature-lock.XXXXXX)"; UV_CACHE_DIR=.cache/uv UV_PYTHON_INSTALL_DIR=.python UV_PROJECT_ENVIRONMENT="$recreate_dir/.venv" uv sync --frozen --offline`
 
@@ -38,3 +45,4 @@ version: 4
 - Slice 002 generation, offline inference, benchmark, and media validation are registered. Generated videos and detailed runtime artifacts remain local and Git-ignored; tracked manifests contain their hashes and measurements.
 - Run host inference only after reviewing the fixed benchmark manifest and current safety thresholds. Never edit the runner while it is active.
 - Rights-ledger verification is not registered until its owning slice implements it.
+- Slice 005 stores new weights under `~/models/huggingface/hub`; `LIVING_LITERATURE_MODEL_STORE` may override that location explicitly.

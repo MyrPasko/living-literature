@@ -46,6 +46,12 @@ The model revision, file set, prompt, and parameters are fixed in tracked manife
 
 The offline command uses macOS `sandbox-exec` to deny network access. Do not edit the runner while either long-running command is active.
 
+## Model Storage
+
+New model caches are stored outside the checkout under `~/models/huggingface/hub`. The Slice 005 tools accept `LIVING_LITERATURE_MODEL_STORE` or `--model-store` as an explicit override. Ollama is not used for Wan video diffusion because it cannot execute the pinned Apple MLX video pipeline.
+
+The older repository-local Slice 002 cache is retained only because its immutable manifest and verifier reference that exact evidence location. Do not move it during another benchmark slice.
+
 ## Project Authority
 
 Repository-local `.project-memory/` is authoritative for active state, constraints, verification commands, and workflow. Obsidian is the durable planning and summary surface.
