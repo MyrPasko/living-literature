@@ -2,7 +2,7 @@
 
 Living Literature is a local-first research project for short cinematic entrances into public-domain literature. The work should lead viewers toward reading rather than replace the source text.
 
-The repository now proves the Slice 002 feasibility boundary: the exact pinned Wan2.1-T2V-1.3B candidate generated the fixed benchmark locally and reproduced a byte-identical result under OS-enforced network denial. `Wan2.1-T2V-1.3B` remains a feasibility candidate, not an accepted production model.
+The repository now proves the Slice 005 capability boundary: BigBoy ran the exact pinned Wan2.1-T2V-14B model locally and reproduced a byte-identical result under OS-enforced network denial. The 14B result passed image quality, color, atmosphere, resource, and offline gates but failed physical motion hard gates, so it is not an accepted production model.
 
 ## Recreate the Environment
 
@@ -31,7 +31,7 @@ Three operations must remain distinct:
 2. Model-weight download is a separate, explicit operation with exact revision and file manifests.
 3. Model inference is local-only. The Slice 002 offline repeat combined library offline flags, local-only cache resolution, and macOS network denial.
 
-No API key or cloud generation service belongs in the inference path. See `docs/local-video-environment.md` for the environment boundary and `docs/slice-002-wan-1.3b-benchmark.md` for the measured inference evidence.
+No API key or cloud generation service belongs in the inference path. See `docs/local-video-environment.md` for the environment boundary, `docs/slice-002-wan-1.3b-benchmark.md` for the 1.3B control, and `docs/slice-005-wan-2.1-t2v-14b-benchmark.md` for the measured 14B evidence.
 
 ## Reproduce the Slice 002 Benchmark
 
@@ -45,6 +45,20 @@ The model revision, file set, prompt, and parameters are fixed in tracked manife
 ```
 
 The offline command uses macOS `sandbox-exec` to deny network access. Do not edit the runner while either long-running command is active.
+
+## Reproduce the Slice 005 Benchmark
+
+The 14B revision, ten-file runtime allowlist, fixed prompt, parameters, safety gates, and external model store are tracked. Expect approximately 3.3–3.7 hours per full run on the measured BigBoy configuration.
+
+```sh
+.venv/bin/python scripts/download-wan-14b.py
+.venv/bin/python scripts/verify-slice-005.py --model-only
+./scripts/run-slice-005-benchmark.sh online
+./scripts/run-slice-005-benchmark.sh offline
+.venv/bin/python scripts/verify-slice-005.py
+```
+
+The measured rejection is intentional evidence, not a request to tune the prompt inside Slice 005. Future prompt and cross-model work must use a new exact slice.
 
 ## Model Storage
 
