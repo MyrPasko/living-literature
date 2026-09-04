@@ -1,0 +1,113 @@
+{
+  "model_repository": "Wan-AI/Wan2.1-T2V-14B",
+  "model_revision": "a064a6c71f5be440641209c07bf2a5ce7a2ff5e4",
+  "license": "Apache-2.0",
+  "license_source": "https://huggingface.co/Wan-AI/Wan2.1-T2V-14B/blob/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/LICENSE.txt",
+  "license_copy": "docs/licenses/wan2.1-t2v-14b-apache-2.0.txt",
+  "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+  "downloaded_at_utc": "2026-09-04T06:50:48.961088+00:00",
+  "cache_root": "~/models/huggingface/hub",
+  "cache_policy": "external-user-model-store",
+  "files": [
+    {
+      "path": "LICENSE.txt",
+      "purpose": "license evidence",
+      "runtime_required": false,
+      "size_bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/LICENSE.txt"
+    },
+    {
+      "path": "README.md",
+      "purpose": "model card evidence",
+      "runtime_required": false,
+      "size_bytes": 16981,
+      "sha256": "448184fe68f994c99be61d0095d29c22b8ecd121e7b1d68d7d16a81fc47880ea",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/README.md"
+    },
+    {
+      "path": "diffusion_pytorch_model.safetensors.index.json",
+      "purpose": "14B diffusion transformer shard index",
+      "runtime_required": true,
+      "size_bytes": 96805,
+      "sha256": "d62743ee76929dc76264d4b86abd710eab38157e17ab12659e66158efb8e069c",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/diffusion_pytorch_model.safetensors.index.json"
+    },
+    {
+      "path": "diffusion_pytorch_model-00001-of-00006.safetensors",
+      "purpose": "14B diffusion transformer shard 1 of 6",
+      "runtime_required": true,
+      "size_bytes": 9887603256,
+      "sha256": "569d54a07279b89f8281421fccf27ee2459ea853ce6845d3536b8664b0070078",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/diffusion_pytorch_model-00001-of-00006.safetensors"
+    },
+    {
+      "path": "diffusion_pytorch_model-00002-of-00006.safetensors",
+      "purpose": "14B diffusion transformer shard 2 of 6",
+      "runtime_required": true,
+      "size_bytes": 9839059648,
+      "sha256": "b17ff172f262b4da91c31e8c46d3b7707f62cecfff6e18dd0072ab29eb350e46",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/diffusion_pytorch_model-00002-of-00006.safetensors"
+    },
+    {
+      "path": "diffusion_pytorch_model-00003-of-00006.safetensors",
+      "purpose": "14B diffusion transformer shard 3 of 6",
+      "runtime_required": true,
+      "size_bytes": 9839059744,
+      "sha256": "741fd1508cd0288f0bb0f4fb3df6734da521d5ff23746170c848564a367e2cea",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/diffusion_pytorch_model-00003-of-00006.safetensors"
+    },
+    {
+      "path": "diffusion_pytorch_model-00004-of-00006.safetensors",
+      "purpose": "14B diffusion transformer shard 4 of 6",
+      "runtime_required": true,
+      "size_bytes": 9839059744,
+      "sha256": "47b08ba289b127fc64979bc877ee07e1c87aeb8eb8cd47bcfd112682847981ba",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/diffusion_pytorch_model-00004-of-00006.safetensors"
+    },
+    {
+      "path": "diffusion_pytorch_model-00005-of-00006.safetensors",
+      "purpose": "14B diffusion transformer shard 5 of 6",
+      "runtime_required": true,
+      "size_bytes": 9839059744,
+      "sha256": "29e35f4cf0e3a61f4726c960f1babf71d65677a8c99fe704257d665c9498ee88",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/diffusion_pytorch_model-00005-of-00006.safetensors"
+    },
+    {
+      "path": "diffusion_pytorch_model-00006-of-00006.safetensors",
+      "purpose": "14B diffusion transformer shard 6 of 6",
+      "runtime_required": true,
+      "size_bytes": 7910235256,
+      "sha256": "91ac087a40b814331e87f5f015af11ba999275d48d2af49591b6bf7727d3c146",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/diffusion_pytorch_model-00006-of-00006.safetensors"
+    },
+    {
+      "path": "Wan2.1_VAE.pth",
+      "purpose": "video autoencoder weights",
+      "runtime_required": true,
+      "size_bytes": 507609880,
+      "sha256": "38071ab59bd94681c686fa51d75a1968f64e470262043be31f7a094e442fd981",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/Wan2.1_VAE.pth"
+    },
+    {
+      "path": "models_t5_umt5-xxl-enc-bf16.pth",
+      "purpose": "local UMT5 text encoder weights",
+      "runtime_required": true,
+      "size_bytes": 11361920418,
+      "sha256": "7cace0da2b446bbbbc57d031ab6cf163a3d59b366da94e5afe36745b746fd81d",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/models_t5_umt5-xxl-enc-bf16.pth"
+    },
+    {
+      "path": "google/umt5-xxl/tokenizer.json",
+      "purpose": "text tokenizer",
+      "runtime_required": true,
+      "size_bytes": 16837417,
+      "sha256": "6e197b4d3dbd71da14b4eb255f4fa91c9c1f2068b20a2de2472967ca3d22602b",
+      "cache_path": "models--Wan-AI--Wan2.1-T2V-14B/snapshots/a064a6c71f5be440641209c07bf2a5ce7a2ff5e4/google/umt5-xxl/tokenizer.json"
+    }
+  ],
+  "runtime_file_count": 10,
+  "runtime_size_bytes": 69040541912,
+  "total_size_bytes": 69040570250,
+  "production_model_accepted": false
+}

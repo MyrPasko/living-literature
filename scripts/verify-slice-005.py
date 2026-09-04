@@ -114,8 +114,10 @@ def verify_model(repo_root: Path, model_store: Path) -> dict:
     require(manifest["license_sha256"] == LICENSE_SHA256, "license hash drift")
     require(manifest["production_model_accepted"] is False, "model prematurely accepted")
     require(manifest["cache_policy"] == "external-user-model-store", "cache policy drift")
+    require(manifest["cache_root"] == "~/models/huggingface/hub", "cache root drift")
     require(manifest["runtime_file_count"] == 10, "runtime file count drift")
     require(manifest["runtime_size_bytes"] == 69_040_541_912, "runtime size drift")
+    require(manifest["total_size_bytes"] == 69_040_570_250, "total file size drift")
     require(model_store.resolve().is_relative_to(Path.home() / "models"), "model store is outside ~/models")
 
     entries = {item["path"]: item for item in manifest["files"]}
@@ -128,6 +130,16 @@ def verify_model(repo_root: Path, model_store: Path) -> dict:
         require(cached.is_file(), f"missing cached model file: {relative_path}")
         require(cached.stat().st_size == entry["size_bytes"], f"size drift: {relative_path}")
         require(sha256(cached) == entry["sha256"], f"hash drift: {relative_path}")
+
+    index_entry = entries["diffusion_pytorch_model.safetensors.index.json"]
+    shard_index = json.loads(
+        (model_store / index_entry["cache_path"]).read_text(encoding="utf-8")
+    )
+    indexed_shards = set(shard_index["weight_map"].values())
+    expected_shards = {
+        name for name in RUNTIME_FILES if name.startswith("diffusion_pytorch_model-")
+    }
+    require(indexed_shards == expected_shards, "DiT shard index drift")
 
     license_copy = repo_root / manifest["license_copy"]
     require(license_copy.is_file(), "missing tracked license copy")
