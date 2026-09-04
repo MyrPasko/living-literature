@@ -29,24 +29,17 @@ terminate_process_tree() {
 
 sum_process_tree_rss_kb() {
   local parent_pid="$1"
-  local total=0
-  local process_pid
+  local total
+  local child_pid
+  local child_total
   local rss
-  local -a queue=("$parent_pid")
-  local -a next_queue=()
-  while ((${#queue[@]} > 0)); do
-    next_queue=()
-    for process_pid in "${queue[@]}"; do
-      rss="$(ps -o rss= -p "$process_pid" 2>/dev/null | tr -d ' ' || true)"
-      if [[ -n "$rss" ]]; then
-        total=$((total + rss))
-      fi
-      while IFS= read -r child_pid; do
-        [[ -n "$child_pid" ]] && next_queue+=("$child_pid")
-      done < <(pgrep -P "$process_pid" 2>/dev/null || true)
-    done
-    queue=("${next_queue[@]}")
-  done
+  rss="$(ps -o rss= -p "$parent_pid" 2>/dev/null | tr -d ' ' || true)"
+  total="${rss:-0}"
+  while IFS= read -r child_pid; do
+    [[ -n "$child_pid" ]] || continue
+    child_total="$(sum_process_tree_rss_kb "$child_pid")"
+    total=$((total + child_total))
+  done < <(pgrep -P "$parent_pid" 2>/dev/null || true)
   printf '%s\n' "$total"
 }
 
