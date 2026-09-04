@@ -1,19 +1,27 @@
 ---
 project: Living Literature
 document: wan-2.1-t2v-14b-benchmark-plan
-status: planned-not-authorized
+status: complete-model-rejected
 created: 2026-09-03
+authorized: 2026-09-04
 slice: slice-005-wan-2.1-t2v-14b-benchmark
 depends_on:
   - slice-003-quality-and-model-gate
-  - slice-004-rights-ledger-foundation
 ---
 
 # Slice 005 — Wan2.1 T2V 14B Benchmark
 
+## Measured Outcome
+
+Slice 005 completed both declared runs without a safety stop. The online-capable run took 13,061 seconds and the OS-network-denied run took 12,038 seconds. Both measured a 29.722 GB MLX peak, zero swap, no thermal or performance warning, and produced byte-identical 708,216-byte H.264 MP4s with SHA-256 `ce7a61c21ef0811062ea6229b3ddf89c6843bdc6569234cab060915bd39f2ad4`.
+
+Technical feasibility, offline reproducibility, image quality, color, atmosphere, and ancient-ship plausibility passed. The model is rejected for this production motion shot because the filled sail conflicts with the calm sea and the foamy trail appears ahead of the vessel, creating a reverse-playback impression. Directed sail motion and temporal/physical coherence therefore failed hard gates.
+
+See `manifests/benchmarks/slice-005-wan-14b-results.json`, `docs/implementation-results/slice-005-wan-2.1-t2v-14b-benchmark.md`, and `docs/t2v-prompt-motion-analysis.md` for the complete evidence and future-slice boundary. The sections below preserve the accepted pre-run plan and thresholds.
+
 ## Authority Boundary
 
-This document specifies exactly one future benchmark. It does **not** authorize model download or inference. Slice 005 requires separate owner authorization after Slice 004.
+The owner authorized this exact benchmark on 2026-09-04 and postponed Slice 004. This slice authorizes the declared Wan 14B download and two local inference runs. It does not authorize any other model, prompt-tuning loop, production work, or publication.
 
 No multi-model bake-off, prompt tuning, distilled checkpoint, I2V input, LTX run, or production work is part of this benchmark.
 
@@ -26,7 +34,16 @@ No multi-model bake-off, prompt tuning, distilled checkpoint, I2V input, LTX run
 - implementation: Apple `mlx-examples/video/wan2.1` at `796f5b53cab69a3d48a44233ce21aae889e94a08`;
 - implementation license: MIT.
 
-Before any future download, re-query repository metadata. Revision drift is a stop, not permission to silently substitute a newer commit.
+Before download, re-query repository metadata. Revision drift is a stop, not permission to silently substitute a newer commit.
+
+## Model Storage Boundary
+
+- Default model store: `~/models/huggingface/hub` (`/Users/myroslavpasko/models/huggingface/hub` on BigBoy).
+- Override, when explicitly needed: `LIVING_LITERATURE_MODEL_STORE` or `--model-store`.
+- The downloader records paths relative to that external store; tracked manifests do not contain the owner's absolute home path.
+- Weights remain outside the repository and cannot be staged by repository Git operations.
+- Ollama remains untouched. Its current supported model-import architectures do not include Wan video diffusion, and its model registry cannot drive the pinned Apple Wan pipeline.
+- The existing repository-local Slice 002 cache remains in place because its immutable manifest and verifier depend on that exact evidence location. This slice does not migrate it.
 
 ## Fixed Prompt and Configuration
 
@@ -74,7 +91,7 @@ Allowlist only these ten runtime files at the exact model revision:
 
 Current verified total: **69,040,541,912 bytes (64.299 GiB)**. License and model-card evidence must also be captured at the exact revision. Reserve at least **165 GiB free disk before download**: the 64.299 GiB runtime set, generous temporary/cache overhead, both MP4s and logs, while preserving the existing 100 GiB runtime stop floor.
 
-## Resource Estimate
+## Resource Estimate (Historical)
 
 These are planning estimates, not measurements:
 

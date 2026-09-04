@@ -1,0 +1,128 @@
+{
+  "benchmark_id": "slice-005-wan-2.1-t2v-14b-fixed-seed",
+  "completed_at_utc": "2026-09-04T14:07:48Z",
+  "model": {
+    "repository": "Wan-AI/Wan2.1-T2V-14B",
+    "revision": "a064a6c71f5be440641209c07bf2a5ce7a2ff5e4",
+    "license": "Apache-2.0",
+    "apple_implementation_revision": "796f5b53cab69a3d48a44233ce21aae889e94a08",
+    "dit_quantization_bits": 8,
+    "production_model_accepted": false
+  },
+  "parameters_source": "benchmarks/slice-005-wan-2.1-t2v-14b.json",
+  "model_manifest": "manifests/models/wan2.1-t2v-14b.json",
+  "runs": [
+    {
+      "run_id": "online-pinned-14b",
+      "network_mode": "online-capable; every model request pinned to the exact revision",
+      "network_denial_preflight": "not-applicable",
+      "git_commit": "715b073ff1d6734d5652667b7361813735da9510",
+      "inference_exit_code": 0,
+      "wrapper_exit_code": 0,
+      "wrapper_closeout": "normal",
+      "wall_duration_seconds": 13061,
+      "inference_duration_seconds": 13055.32,
+      "mlx_peak_memory_gb": 29.722,
+      "maximum_resident_set_bytes": 39442448384,
+      "peak_process_footprint_bytes": 39402631560,
+      "minimum_observed_memory_free_percent": 84,
+      "maximum_observed_swap_mb": 0.0,
+      "maximum_sampled_process_tree_rss_kb": 1980720,
+      "thermal_or_performance_warning_observed": false,
+      "safety_stop": "none",
+      "output": "outputs/slice-005/wan-14b-online-seed-42.mp4",
+      "output_sha256": "ce7a61c21ef0811062ea6229b3ddf89c6843bdc6569234cab060915bd39f2ad4",
+      "output_size_bytes": 708216
+    },
+    {
+      "run_id": "offline-network-denied-14b",
+      "network_mode": "HF offline flags, local_files_only, and macOS sandbox deny network",
+      "network_denial_preflight": "pass; loopback socket binding was denied",
+      "git_commit": "715b073ff1d6734d5652667b7361813735da9510",
+      "inference_exit_code": 0,
+      "wrapper_exit_code": 0,
+      "wrapper_closeout": "normal",
+      "wall_duration_seconds": 12038,
+      "inference_duration_seconds": 12017.43,
+      "mlx_peak_memory_gb": 29.722,
+      "maximum_resident_set_bytes": 39438303232,
+      "peak_process_footprint_bytes": 39400599944,
+      "minimum_observed_memory_free_percent": 85,
+      "maximum_observed_swap_mb": 0.0,
+      "maximum_sampled_process_tree_rss_kb": 1736464,
+      "thermal_or_performance_warning_observed": false,
+      "safety_stop": "none",
+      "output": "outputs/slice-005/wan-14b-offline-seed-42.mp4",
+      "output_sha256": "ce7a61c21ef0811062ea6229b3ddf89c6843bdc6569234cab060915bd39f2ad4",
+      "output_size_bytes": 708216
+    }
+  ],
+  "media": {
+    "codec": "h264",
+    "width": 832,
+    "height": 480,
+    "frames": 81,
+    "frames_per_second": 16,
+    "duration_seconds": 5.0625,
+    "full_decode": "pass",
+    "online_offline_outputs_byte_identical": true
+  },
+  "quality_review": {
+    "method": "owner normal-speed playback plus first, middle, last, and ten evenly spaced frame samples",
+    "image_quality_and_color": {
+      "status": "pass",
+      "observation": "The owner judged the image quality and colors fully satisfactory and described the clouded pre-dawn sky as exceptionally compelling."
+    },
+    "bronze_age_greek_ship_specificity": {
+      "status": "pass",
+      "hard_gate": true,
+      "observation": "The single-mast, square-sail silhouette with a long low hull and curved ends reads as a plausible ancient Aegean galley rather than an obvious modern or later multi-mast vessel."
+    },
+    "directed_square_sail_motion": {
+      "status": "fail",
+      "hard_gate": true,
+      "observation": "The sail appears filled, but the nearly calm sea does not show a physically consistent response to the implied wind."
+    },
+    "atmosphere": {
+      "status": "pass",
+      "observation": "The dark wine-colored sea, heavy purple clouds, pre-dawn light, wide composition, and restrained palette remain coherent and visually strong."
+    },
+    "temporal_object_coherence": {
+      "status": "fail",
+      "hard_gate": true,
+      "observation": "Object geometry remains stable, but the foamy trail appears ahead of the vessel rather than behind the stern, creating a reverse-playback impression."
+    },
+    "restrained_realism": {
+      "status": "fail",
+      "observation": "The filled sail, calm water, and forward wake violate the requested physical realism despite otherwise restrained motion."
+    },
+    "forbidden_content": {
+      "status": "pass",
+      "hard_gate": true,
+      "observation": "No text, watermark, modern object, or unsafe content is visible."
+    },
+    "material_improvement_over_slice_002": {
+      "status": "fail",
+      "observation": "Visual specificity and atmosphere improved, but directed sail and water motion did not become a pass."
+    },
+    "production_suitability": {
+      "status": "not-accepted",
+      "observation": "Strong source material for visual direction, color, and atmosphere; rejected as a production motion shot because two hard motion gates failed."
+    }
+  },
+  "acceptance": {
+    "both_runs_completed_within_four_hours": true,
+    "offline_network_denial_proven": true,
+    "outputs_byte_identical": true,
+    "media_and_full_decode_passed": true,
+    "resource_safety_passed": true,
+    "all_quality_hard_gates_passed": false,
+    "production_model_accepted": false,
+    "slice_005_investigation_complete": true
+  },
+  "disposition": {
+    "status": "rejected-for-this-production-shot",
+    "reason": "Physical motion and temporal-causality hard gates failed even though visual quality and local reproducibility passed.",
+    "next_gate": "slice-006-flagship-video-model-comparison-gate"
+  }
+}

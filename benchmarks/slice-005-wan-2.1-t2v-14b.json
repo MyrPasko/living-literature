@@ -1,0 +1,54 @@
+{
+  "benchmark_id": "slice-005-wan-2.1-t2v-14b-fixed-seed",
+  "locked_at_utc": "2026-09-04T00:00:00Z",
+  "authorized_at_utc": "2026-09-04T06:30:00Z",
+  "prompt": "A black ancient Greek ship crosses a dark wine-colored sea before dawn. Bronze Age aesthetic, heavy clouds, cold wind moving the square sail, cinematic wide shot, restrained realistic motion, no text, no modern objects.",
+  "negative_prompt": "Text, watermarks, blurry image, JPEG artifacts",
+  "model": {
+    "repository": "Wan-AI/Wan2.1-T2V-14B",
+    "revision": "a064a6c71f5be440641209c07bf2a5ce7a2ff5e4",
+    "apple_implementation_revision": "796f5b53cab69a3d48a44233ce21aae889e94a08",
+    "cache_root": "~/models/huggingface/hub"
+  },
+  "parameters": {
+    "model": "t2v-14B",
+    "width": 832,
+    "height": 480,
+    "frames": 81,
+    "steps": 50,
+    "guidance": 5.0,
+    "shift": 5.0,
+    "seed": 42,
+    "sampler": "unipc",
+    "quantization_bits": 8,
+    "offloading": "none",
+    "teacache": 0.0,
+    "metal_cache_enabled": false,
+    "preload_models": false,
+    "prompt_extension": false,
+    "fps": 16
+  },
+  "safety": {
+    "minimum_preflight_memory_free_percent": 90,
+    "required_preflight_swap_mb": 0,
+    "minimum_disk_before_download_gib": 165,
+    "minimum_disk_before_inference_gib": 120,
+    "stop_memory_free_percent": 10,
+    "stop_swap_above_mb": 8192,
+    "stop_disk_below_gib": 100,
+    "stop_progress_silence_seconds": 1200,
+    "maximum_run_seconds": 14400
+  },
+  "runs": [
+    {
+      "run_id": "online-pinned-14b",
+      "network_mode": "online-capable with every model request pinned to the exact revision",
+      "output": "outputs/slice-005/wan-14b-online-seed-42.mp4"
+    },
+    {
+      "run_id": "offline-network-denied-14b",
+      "network_mode": "HF offline flags plus macOS sandbox deny network",
+      "output": "outputs/slice-005/wan-14b-offline-seed-42.mp4"
+    }
+  ]
+}
