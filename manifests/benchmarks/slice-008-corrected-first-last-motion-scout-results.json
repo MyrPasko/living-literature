@@ -1,9 +1,9 @@
 {
   "benchmark_id": "slice-008-corrected-first-last-motion-scout",
   "run_id": "local-files-only-first-last-motion-scout-seed-42",
-  "status": "pending-owner-motion-review",
+  "status": "complete",
   "technical_verdict": "pass",
-  "disposition": "pending",
+  "disposition": "motion-scout-passed",
   "generation_attempts": 1,
   "generation_started_at_utc": "2026-09-05T11:30:14Z",
   "generation_ended_at_utc": "2026-09-05T11:34:01Z",
@@ -107,23 +107,23 @@
     "sampled_frame_numbers_zero_based": [0, 8, 16, 24, 32, 40]
   },
   "owner_motion_review": {
-    "status": "pending",
-    "reviewed_at_utc": null,
+    "status": "pass",
+    "reviewed_at_utc": "2026-09-05T12:20:13Z",
     "hard_gates": {
-      "bow_and_submerged_ram_remain_right": "pending",
-      "stern_and_steering_oar_remain_left": "pending",
-      "ship_moves_continuously_left_to_right_bow_first": "pending",
-      "total_displacement_matches_anchor_distance": "pending",
-      "speed_is_slow_smooth_and_uniform": "pending",
-      "wind_reads_strictly_left_to_right": "pending",
-      "sail_bows_right_without_deformation": "pending",
-      "wavelets_remain_visible_across_entire_sea": "pending",
-      "small_bow_wave_begins_at_ram": "pending",
-      "low_energy_wake_starts_only_behind_stern": "pending",
-      "ship_horizon_and_camera_remain_stable": "pending",
-      "no_text_watermark_modern_object_or_major_collapse": "pending"
+      "bow_and_submerged_ram_remain_right": "pass",
+      "stern_and_steering_oar_remain_left": "pass",
+      "ship_moves_continuously_left_to_right_bow_first": "pass",
+      "total_displacement_matches_anchor_distance": "pass",
+      "speed_is_slow_smooth_and_uniform": "pass",
+      "wind_reads_strictly_left_to_right": "pass",
+      "sail_bows_right_without_deformation": "pass",
+      "wavelets_remain_visible_across_entire_sea": "pass",
+      "small_bow_wave_begins_at_ram": "pass",
+      "low_energy_wake_starts_only_behind_stern": "pass",
+      "ship_horizon_and_camera_remain_stable": "pass",
+      "no_text_watermark_modern_object_or_major_collapse": "pass"
     },
-    "notes": null
+    "notes": "The owner returned an overall Pass after reviewing the generated video and contact sheet; this records all twelve requested motion hard gates as passed. The result remains internal-evaluation-only and does not accept a production model or authorize another inference."
   },
   "restrictions": {
     "rerun_authorized": false,

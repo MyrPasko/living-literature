@@ -1,7 +1,7 @@
 ---
 task_id: slice-008-corrected-first-last-motion-scout
 task_type: feature
-status: technical-pass-pending-owner-motion-review
+status: complete-motion-scout-passed
 branch: feature/slice-008-corrected-first-last-motion-scout
 date: 2026-09-05
 write_scope:
@@ -20,7 +20,7 @@ verification_surface:
   - exact anchors, model and runtime provenance, and complete local inventories
   - immutable prompts, parameters, one-attempt marker, and safety controls
   - measured resource telemetry, output identity, media properties, full decode, and contact sheet
-  - twelve owner motion hard gates, which remain pending
+  - twelve owner motion hard gates and the recorded owner pass
   - historical verifiers and repository safety checks
 success_criteria:
   - execute exactly one bounded local first/last-frame scout and record its technical result for owner review
@@ -34,7 +34,7 @@ slice_restrictions:
 
 ## Outcome
 
-Slice 008 completed exactly one authorized Wan2.2 I2V-A14B BF16 first/last-frame inference attempt. The runner and media passed technical validation with no safety stop. Motion acceptance remains pending the owner’s twelve hard-gate verdicts. No additional inference, tuning, duplicate, or full render is authorized.
+Slice 008 completed exactly one authorized Wan2.2 I2V-A14B BF16 first/last-frame inference attempt. The runner and media passed technical validation with no safety stop, and the owner passed all twelve motion hard gates. This is an internal motion-scout pass, not production-model acceptance. No additional inference, tuning, duplicate, or full render is authorized.
 
 ## Work Performed
 
@@ -66,7 +66,9 @@ The sampling loop emitted progress through step 14 before the fast final decode 
 
 ## Owner Motion Review
 
-Pending. Technical success does not decide any visual gate. The owner must review the generated video and six-frame contact sheet and provide verdicts for all twelve frozen gates covering orientation, travel direction, displacement, speed, wind, sail, water, bow wave, wake, geometric/camera stability, and forbidden content.
+The owner returned an overall `Pass` on 2026-09-05 after reviewing the generated video and six-frame contact sheet. All twelve frozen gates pass: orientation, left-to-right bow-first travel, anchor-matched displacement, slow and uniform speed, left-to-right wind, right-bowing intact sail, visible wavelets, bow wave at the ram, stern-only left-trailing wake, stable geometry/horizon/camera, and absence of forbidden content or major collapse.
+
+The pass is limited to this 448×256 internal scout. The unresolved reference lineage still prohibits publication and production use, the full-run resource and quality envelope remains unmeasured, and no production video model is accepted.
 
 ## Commands Run
 
@@ -91,6 +93,9 @@ Pending. Technical success does not decide any visual gate. The owner must revie
 
 All commands above passed. The language scan returned no matches. The artifact scan found only the six expected ignored Slice 002, 005, 007, and 008 videos and no tracked weight or video. The strict project-local Memory Core audit reported zero issues in every category.
 
+- `command:` `.venv/bin/python scripts/verify-slice-008.py` after owner review
+  - `result:` pass in complete state with all twelve gates recorded as passing
+
 ## Stop Boundary
 
-The single attempt is consumed. The attempt marker and output both exist, and the runner refuses another launch. No push, pull request, merge, additional generation, publication, or Memory Core promotion was performed.
+The single attempt is consumed. The attempt marker and output both exist, and the runner refuses another launch. Slice 008 is complete. No push, pull request, merge, additional generation, publication, production acceptance, or Memory Core promotion was performed.
