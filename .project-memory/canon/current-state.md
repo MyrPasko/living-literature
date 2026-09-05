@@ -1,6 +1,6 @@
 ---
 project: living-literature
-merged_baseline: slice-007-wan-2.2-i2v-a14b-motion-scout-complete-rejected
+merged_baseline: slice-010-wan2.2-exact-first-last-full-render-complete-rejected-motion
 active_slice: none
 next_slice: owner-decision-on-corrected-hull-and-steering-oar-motion-scout
 postponed_slice: slice-004-rights-ledger-foundation
@@ -12,7 +12,7 @@ authoritative_since: 2026-09-05
 # Current State
 
 ## Merged Baseline
-- Slices 001–003 and 005–007 are merged; Slice 004 is postponed. Slice 008 is complete and unmerged.
+- Slices 001–003 and 005–010 are merged; Slice 004 is postponed.
 - Slice 005 passed local/offline execution but failed motion; Slice 007 passed technically but failed motion.
 
 ## Active Slice
