@@ -55,8 +55,7 @@ version: 11
 - `.venv/bin/python scripts/verify-slice-009.py --configuration-only` before committing the frozen pre-inference configuration
 - `.venv/bin/python scripts/verify-slice-009.py --preflight` after the exact configuration is committed and immediately before the single authorized attempt
 - `./scripts/run-slice-009-full-render.sh` exactly once; the runner repeats Slice 009 and Slice 007 preflights, creates a durable marker before launch, and refuses an existing marker or output
-- `.venv/bin/python scripts/verify-slice-009.py --allow-pending-review` after technical completion and before owner motion review
-- `.venv/bin/python scripts/verify-slice-009.py` after all twelve owner motion verdicts are recorded
+- `.venv/bin/python scripts/verify-slice-009.py` after the pre-denoise resolution-contract rejection; a successful future route would instead use `--allow-pending-review` before owner review
 
 ## Lockfile Recreation
 - `recreate_dir="$(mktemp -d /private/tmp/living-literature-lock.XXXXXX)"; UV_CACHE_DIR=.cache/uv UV_PYTHON_INSTALL_DIR=.python UV_PROJECT_ENVIRONMENT="$recreate_dir/.venv" uv sync --frozen --offline`
@@ -77,4 +76,4 @@ version: 11
 - Slice 007 permits one local-files-only scout after the exact runtime, model inventory, source still, host safety gates, and committed configuration pass. It does not permit a duplicate, tuning, or full render.
 - Slice 008’s two-anchor route must use the direct `mlxgen-generate-wan` executable because the generic wrapper does not expose `--last-image`.
 - Slice 008 execution permits exactly one local-files-only first/last-frame scout after renewed checks. It authorizes no retry, tuning, duplicate, full render, parallel inference, publication, or automatic Memory Core promotion.
-- Slice 009 permits exactly one local-files-only 832×480, 81-frame Wan2.2 first/last-frame full render with the frozen Slice 008 anchors and prompts. It authorizes no retry, tuning, offline duplicate, parallel inference, publication, production acceptance, or automatic Memory Core promotion.
+- Slice 009 stopped before denoising because `source-aspect` resolved 832×480 to 848×480. Its marker remains, no video exists, and no corrected launch or retry is authorized.

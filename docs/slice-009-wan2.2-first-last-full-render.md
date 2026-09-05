@@ -1,8 +1,8 @@
 ---
 project: Living Literature
 document: wan2.2-first-last-full-render
-status: inference-authorized-frozen
-verified: pending
+status: complete-pre-denoise-configuration-rejection
+verified: 2026-09-05
 slice: slice-009-wan2.2-first-last-full-render
 ---
 
@@ -58,3 +58,7 @@ The slice authorizes no download, installation, tuning, retry, alternate seed or
 - Write scope: Slice 009 benchmark, runner, verifier, results and documentation; three repo-canon registries; generated project-local workflow artifacts; ignored Slice 009 output and telemetry.
 - Verification: configuration and host preflight, historical inventory preflight, runtime telemetry, media probe and full decode, hashes, metadata, contact sheet, and owner motion review.
 - Success: one safe completed render and technically valid review artifact. Motion acceptance is a separate owner verdict.
+
+## Execution Result
+
+The launch was interrupted before denoising because `source-aspect` resolved the requested 832×480 canvas to 848×480. No video was produced and no retry occurred. See the implementation result for measured evidence and the authority boundary for any corrected attempt.

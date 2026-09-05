@@ -135,11 +135,43 @@ def verify_result(repo_root: Path, benchmark: dict, allow_pending_review: bool) 
     require(result_path.is_file(), "Slice 009 results manifest missing")
     result = load_json(result_path)
     require(result["benchmark_id"] == BENCHMARK_ID and result["run_id"] == RUN_ID, "result identity drift")
-    require(result["generation_attempts"] == 1 and result["technical_verdict"] == "pass", "technical result drift")
 
     run_root = repo_root / "benchmarks/artifacts/slice-009" / RUN_ID
     summary = load_env(run_root / "summary.env")
     require((run_root / "generation-attempt-started.marker").is_file(), "attempt marker missing")
+    if result["technical_verdict"] == "fail":
+        require(not allow_pending_review, "pending review is invalid for a pre-denoise rejection")
+        require(result["status"] == "complete-pre-denoise-configuration-rejection", "rejection status drift")
+        require(result["generation_attempts"] == 0 and result["generation_attempts_after_denoising_started"] == 0, "generation count drift")
+        log_text = (run_root / "run.log").read_text(encoding="utf-8")
+        require(log_text.count('\"phase\": \"denoise\"') == 0, "denoising unexpectedly started")
+        require("Adjusting requested video size (480, 832)" in log_text and '"width": 848, "height": 480' in log_text, "resolution mismatch evidence drift")
+        require(not (repo_root / benchmark["run"]["output"]).exists(), "unexpected video output exists")
+        require(not Path(summary["metadata"]).exists(), "unexpected metadata output exists")
+        rows = (run_root / "system-samples.tsv").read_text(encoding="utf-8").splitlines()[1:]
+        columns = [row.split("\t", 6) for row in rows]
+        require(len(rows) == result["resources"]["sample_count"] and all(len(row) == 7 for row in columns), "sample evidence drift")
+        observed = (
+            min(int(float(row[1])) for row in columns),
+            max(float(row[2]) for row in columns),
+            max(int(row[5]) for row in columns),
+            min(int(row[3]) for row in columns),
+            min(int(row[4]) for row in columns),
+        )
+        recorded = (
+            result["resources"]["minimum_memory_free_percent"],
+            result["resources"]["maximum_swap_mb"],
+            result["resources"]["maximum_sampled_process_tree_rss_kb"],
+            result["resources"]["minimum_repo_disk_available_kb"],
+            result["resources"]["minimum_model_disk_available_kb"],
+        )
+        require(observed == recorded, "recorded resource evidence drift")
+        require(all("No thermal warning" in row[6] and "No performance warning" in row[6] for row in columns), "warning observed")
+        require(result["owner_motion_review"]["status"] == "not_applicable_no_video", "motion review status drift")
+        require(all(value == "not_assessed" for value in result["owner_motion_review"]["hard_gates"].values()), "unexpected motion verdict")
+        return
+
+    require(result["generation_attempts"] == 1 and result["technical_verdict"] == "pass", "technical result drift")
     require(summary["inference_exit_code"] == "0" and summary["safety_stop"] == "none", "inference or safety failure")
     require(summary["full_decode"] == "pass" and summary["wrapper_closeout"] == "normal", "runner closeout drift")
     require(int(summary["duration_seconds"]) <= 14400, "run exceeded four hours")
@@ -210,7 +242,11 @@ def main() -> int:
         print("slice-009-verification=pass state=preflight inference=one-attempt-authorized")
         return 0
     verify_result(repo_root, benchmark, args.allow_pending_review)
-    print(f"slice-009-verification=pass state={'pending-owner-review' if args.allow_pending_review else 'complete'}")
+    result = load_json(repo_root / "manifests/benchmarks/slice-009-wan2.2-first-last-full-render-results.json")
+    if result["technical_verdict"] == "fail":
+        print("slice-009-verification=pass state=complete-pre-denoise-configuration-rejection")
+    else:
+        print(f"slice-009-verification=pass state={'pending-owner-review' if args.allow_pending_review else 'complete'}")
     return 0
 
 
