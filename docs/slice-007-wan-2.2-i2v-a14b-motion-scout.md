@@ -1,8 +1,8 @@
 ---
 project: Living Literature
 document: wan-2.2-i2v-a14b-motion-scout
-status: active
-verified: pending
+status: complete-rejected
+verified: 2026-09-05
 slice: slice-007-wan-2.2-i2v-a14b-motion-scout
 ---
 
@@ -93,4 +93,12 @@ Any failure rejects the route without tuning, alternate seeds or samplers, adapt
 
 ## Completion Boundary
 
-After technical validation, the owner reviews the generated scout. The slice remains awaiting editorial verdict until the owner marks every hard gate. A passing scout may inform a separately approved later full-benchmark slice; it does not authorize that run.
+After technical validation, the owner reviews the generated scout. One confirmed hard-gate failure is sufficient to reject the route; gates that are unnecessary after an early rejection may be recorded as `not_assessed`. A passing scout could inform a separately approved later full-benchmark slice, but would not authorize that run.
+
+## Result
+
+The one authorized scout completed technically: local-files-only execution returned normally, full decode passed, sampled swap remained zero, minimum sampled memory free was 89%, and no thermal or performance warning was observed.
+
+The owner rejected the motion on 2026-09-05. The ship moved in reverse instead of continuously left to right, the sail implied wind inconsistent with the intended travel direction, the taut sail was not matched by wind-driven surface waves, and the ship moved too quickly for the depicted slow wind. The continuous-left-to-right and wind/water-causality hard gates therefore failed. The remaining hard gates were not assessed because these failures already reject the route.
+
+No rerun, tuning, alternate seed, full render, production acceptance, publication, or Memory Core promotion is authorized by this result.

@@ -235,6 +235,7 @@ def verify_result(repo_root: Path, benchmark: dict, allow_pending_review: bool) 
     require(results["benchmark_id"] == BENCHMARK_ID, "results benchmark drift")
     require(results["run_id"] == RUN_ID, "results run id drift")
     require(results["generation_attempts"] == 1, "generation attempt count drift")
+    require(results["technical_verdict"] == "pass", "technical verdict drift")
     require(results["model_revision"] == MODEL_REVISION, "results model revision drift")
     require(results["runtime_version"] == RUNTIME_VERSION, "results runtime drift")
     require(results["source_still_sha256"] == STILL_SHA256, "results still drift")
@@ -287,14 +288,24 @@ def verify_result(repo_root: Path, benchmark: dict, allow_pending_review: bool) 
     review = results["owner_motion_review"]
     if review["status"] == "pending":
         require(allow_pending_review, "owner motion review is pending")
+        require(results["status"] == "pending-owner-motion-review", "pending result status drift")
+        require(results["disposition"] == "pending", "pending disposition drift")
         require(all(value == "pending" for value in review["hard_gates"].values()), "pending review has decided gates")
     else:
         require(not allow_pending_review, "remove --allow-pending-review after owner verdict")
         require(review["status"] in {"pass", "fail"}, "owner review status invalid")
         require(set(review["hard_gates"]) == set(benchmark["hard_gates"]), "owner gate set drift")
-        require(all(value in {"pass", "fail"} for value in review["hard_gates"].values()), "owner gate verdict missing")
-        expected_status = "pass" if all(value == "pass" for value in review["hard_gates"].values()) else "fail"
-        require(review["status"] == expected_status, "owner aggregate verdict drift")
+        gate_values = set(review["hard_gates"].values())
+        require(gate_values <= {"pass", "fail", "not_assessed"}, "owner gate verdict invalid")
+        if review["status"] == "pass":
+            require(gate_values == {"pass"}, "passing review must pass every hard gate")
+            require(results["disposition"] != "rejected-motion", "passing review cannot reject motion")
+        else:
+            require("fail" in gate_values, "failed review must identify at least one failed hard gate")
+            require(results["disposition"] == "rejected-motion", "failed review must reject motion")
+        require(results["status"] == "complete", "reviewed result must be complete")
+        require(review["reviewed_at_utc"], "review timestamp missing")
+        require(review["notes"], "owner review notes missing")
 
 
 def main() -> int:

@@ -1,9 +1,9 @@
 {
   "benchmark_id": "slice-007-wan-2.2-i2v-a14b-motion-scout",
   "run_id": "local-files-only-motion-scout-seed-42",
-  "status": "pending-owner-motion-review",
+  "status": "complete",
   "technical_verdict": "pass",
-  "disposition": "pending",
+  "disposition": "rejected-motion",
   "generation_attempts": 1,
   "generation_started_at_utc": "2026-09-05T07:57:11Z",
   "generation_ended_at_utc": "2026-09-05T08:01:43Z",
@@ -99,21 +99,21 @@
     "sampled_frame_numbers_zero_based": [0, 8, 16, 24, 32, 40]
   },
   "owner_motion_review": {
-    "status": "pending",
-    "reviewed_at_utc": null,
+    "status": "fail",
+    "reviewed_at_utc": "2026-09-05T08:40:00Z",
     "hard_gates": {
-      "bow_remains_right": "pending",
-      "stern_remains_left": "pending",
-      "ship_moves_continuously_left_to_right": "pending",
-      "wake_starts_only_behind_stern_and_trails_left": "pending",
-      "small_bow_wave_begins_at_prow": "pending",
-      "bow_wave_does_not_resemble_forward_wake": "pending",
-      "water_motion_matches_wind_and_filled_sail": "pending",
-      "sail_does_not_deform": "pending",
-      "ship_mast_hull_horizon_and_camera_remain_stable": "pending",
-      "no_text_watermark_modern_object_unsafe_content_or_major_collapse": "pending"
+      "bow_remains_right": "not_assessed",
+      "stern_remains_left": "not_assessed",
+      "ship_moves_continuously_left_to_right": "fail",
+      "wake_starts_only_behind_stern_and_trails_left": "not_assessed",
+      "small_bow_wave_begins_at_prow": "not_assessed",
+      "bow_wave_does_not_resemble_forward_wake": "not_assessed",
+      "water_motion_matches_wind_and_filled_sail": "fail",
+      "sail_does_not_deform": "not_assessed",
+      "ship_mast_hull_horizon_and_camera_remain_stable": "not_assessed",
+      "no_text_watermark_modern_object_unsafe_content_or_major_collapse": "not_assessed"
     },
-    "notes": null
+    "notes": "The owner rejected the route because the ship moved in reverse, the sail implied wind inconsistent with the intended travel direction, a taut filled sail was not accompanied by wind-driven surface waves, and the ship moved too quickly for the depicted slow wind. The remaining hard gates were not assessed because these failures already reject the route."
   },
   "restrictions": {
     "rerun_authorized": false,

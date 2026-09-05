@@ -1,6 +1,6 @@
 ---
 kind: verification-commands
-version: 7
+version: 8
 ---
 
 # Verification Commands
@@ -42,7 +42,7 @@ version: 7
 - `.venv/bin/python scripts/verify-slice-007.py --preflight` before the one authorized generation attempt
 - `./scripts/run-slice-007-motion-scout.sh` exactly once; the runner refuses a second attempt after denoising starts
 - `.venv/bin/python scripts/verify-slice-007.py --allow-pending-review` after technical completion and before owner motion review
-- `.venv/bin/python scripts/verify-slice-007.py` after the owner records all ten motion-gate verdicts
+- `.venv/bin/python scripts/verify-slice-007.py` after owner review; a failed review may leave unnecessary gates as `not_assessed` but must record at least one explicit failure
 
 ## Lockfile Recreation
 - `recreate_dir="$(mktemp -d /private/tmp/living-literature-lock.XXXXXX)"; UV_CACHE_DIR=.cache/uv UV_PYTHON_INSTALL_DIR=.python UV_PROJECT_ENVIRONMENT="$recreate_dir/.venv" uv sync --frozen --offline`
