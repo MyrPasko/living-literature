@@ -36,12 +36,12 @@ EXPECTED_FILES = {
     "text_encoder/model.safetensors.index.json",
     "tokenizer/tokenizer.json",
     "tokenizer/tokenizer_config.json",
-    "transformer/config.json",
     *{f"transformer/{index}.safetensors" for index in range(14)},
-    "transformer_2/config.json",
+    "transformer/model.safetensors.index.json",
     *{f"transformer_2/{index}.safetensors" for index in range(14)},
-    "vae/config.json",
-    "vae/diffusion_pytorch_model.safetensors",
+    "transformer_2/model.safetensors.index.json",
+    "vae/0.safetensors",
+    "vae/model.safetensors.index.json",
 }
 POSITIVE_PROMPT = (
     "Single continuous five-second shot, locked-off wide side view. A Late Bronze Age Aegean "

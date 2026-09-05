@@ -23,7 +23,6 @@
     "text_encoder/model.safetensors.index.json",
     "tokenizer/tokenizer.json",
     "tokenizer/tokenizer_config.json",
-    "transformer/config.json",
     "transformer/0.safetensors",
     "transformer/1.safetensors",
     "transformer/2.safetensors",
@@ -38,7 +37,7 @@
     "transformer/11.safetensors",
     "transformer/12.safetensors",
     "transformer/13.safetensors",
-    "transformer_2/config.json",
+    "transformer/model.safetensors.index.json",
     "transformer_2/0.safetensors",
     "transformer_2/1.safetensors",
     "transformer_2/2.safetensors",
@@ -53,8 +52,9 @@
     "transformer_2/11.safetensors",
     "transformer_2/12.safetensors",
     "transformer_2/13.safetensors",
-    "vae/config.json",
-    "vae/diffusion_pytorch_model.safetensors"
+    "transformer_2/model.safetensors.index.json",
+    "vae/0.safetensors",
+    "vae/model.safetensors.index.json"
   ],
   "downloaded": false,
   "downloaded_at_utc": null,
