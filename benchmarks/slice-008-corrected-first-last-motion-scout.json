@@ -1,13 +1,21 @@
 {
   "benchmark_id": "slice-008-corrected-first-last-motion-scout",
-  "status": "anchors-and-prompts-approved",
+  "status": "inference-authorized-frozen",
   "prepared_at_utc": "2026-09-05T08:51:57Z",
+  "locked_at_utc": "2026-09-05T11:18:16Z",
   "preparation_authorization": "Owner approved Slice 007 merge and Slice 008 preparation through the two-anchor visual and prompt approval gate, with no inference.",
+  "execution_authorization": "Owner pasted the self-contained Slice 008 execution prompt, authorizing exactly one bounded sequential local inference attempt after all renewed checks pass.",
   "baseline_commit": "39d3ad3fbc965d70a267c20fb7e57cc839769a79",
   "model": {
     "repository": "AbstractFramework/wan2.2-i2v-a14b-diffusers-bf16",
     "revision": "ef2a0bfe5b4ca7edb84c93f1675edb1a8bfe7d60",
+    "source_repository": "Wan-AI/Wan2.2-I2V-A14B-Diffusers",
+    "source_revision": "596658fd9ca6b7b71d5057529bbf319ecbc61d74",
+    "license": "Apache-2.0",
+    "file_count": 44,
+    "size_bytes": 68791046058,
     "precision": "BF16",
+    "cache_root": "~/models/huggingface/hub",
     "reuse_existing_local_package": true,
     "download_authorized": false
   },
@@ -16,7 +24,8 @@
     "version": "0.33.1",
     "source_commit": "23cee803f10aacdf943a9565f7cd67c25c825080",
     "wheel_sha256": "1a19e6510a166cbe0fe4975146813fb61adf98f0e073abb4e63f27f012882d0a",
-    "executable": "mlxgen-generate-wan",
+    "environment_root": "~/models/living-literature/runtimes/mlx-gen-0.33.1",
+    "executable": "~/models/living-literature/runtimes/mlx-gen-0.33.1/.venv/bin/mlxgen-generate-wan",
     "endpoint_option": "--last-image",
     "endpoint_support": "experimental-wan-a14b-first-last-bracket-conditioning",
     "generic_wrapper_exposes_endpoint_option": false
@@ -54,6 +63,7 @@
     "requested_height": 256,
     "canvas_policy": "source-aspect",
     "resize_mode": "resize",
+    "record_resolved_dimensions": true,
     "frames": 41,
     "fps": 8,
     "steps": 15,
@@ -65,23 +75,45 @@
     "low_ram": true,
     "metadata": true,
     "prompt_cache": false,
+    "release_inactive_denoiser": true,
     "lora": null,
-    "parallel_process": false
+    "lightning_adapter": null,
+    "prompt_extension": false,
+    "cache_acceleration": false,
+    "video_to_video_input": false,
+    "parallel_process": false,
+    "cloud_service": false,
+    "api_key": false,
+    "compile_transformer": false
+  },
+  "safety": {
+    "minimum_preflight_memory_free_percent": 90,
+    "required_preflight_swap_mb": 0,
+    "minimum_disk_before_inference_gib": 120,
+    "stop_memory_free_percent": 10,
+    "stop_swap_above_mb": 8192,
+    "stop_disk_below_gib": 100,
+    "stop_progress_silence_seconds": 1200,
+    "maximum_run_seconds": 14400,
+    "sample_interval_seconds": 15,
+    "network_mode": "local_files_only_with_hf_offline_flags",
+    "sequential_only": true
   },
   "approval_gate": {
     "approved_at_date": "2026-09-05",
     "first_anchor_approved": true,
     "last_anchor_approved_for_slice_008": true,
     "prompt_approved": true,
-    "inference_authorized_in_current_session": false,
+    "inference_authorized_in_current_session": true,
     "next_session_prompt_authorizes_one_inference_when_pasted": true,
-    "required_next_action": "use-self-contained-slice-008-inference-prompt-in-next-session"
+    "required_next_action": "execute-exactly-one-guarded-local-first-last-motion-scout"
   },
-  "future_run_boundary": {
+  "run": {
+    "run_id": "local-files-only-first-last-motion-scout-seed-42",
     "maximum_generation_attempts_after_denoising_starts": 1,
+    "attempt_marker": "benchmarks/artifacts/slice-008/local-files-only-first-last-motion-scout-seed-42/generation-attempt-started.marker",
     "output": "outputs/slice-008/wan2.2-i2v-a14b-first-last-motion-scout-seed-42.mp4",
-    "requires_pasted_next_session_prompt_as_authorization": true,
-    "safety_thresholds": "reuse-slice-007"
+    "requires_pasted_next_session_prompt_as_authorization": true
   },
   "hard_gates": [
     "bow_and_submerged_ram_remain_right",
@@ -97,8 +129,21 @@
     "ship_horizon_and_camera_remain_stable",
     "no_text_watermark_modern_object_or_major_collapse"
   ],
+  "failure_policy": {
+    "reject_route_on_any_hard_gate_failure": true,
+    "no_automatic_rerun_after_denoising_starts": true,
+    "forbidden_after_failure": [
+      "seed_sweep",
+      "prompt_or_parameter_tuning",
+      "alternate_sampler_experiment",
+      "lora_or_adapter_experiment",
+      "offline_duplicate",
+      "longer_or_full_resolution_render",
+      "parallel_or_cloud_inference"
+    ]
+  },
   "slice_restrictions": {
-    "inference_authorized": false,
+    "inference_authorized": true,
     "download_authorized": false,
     "runtime_installation_authorized": false,
     "rerun_authorized": false,

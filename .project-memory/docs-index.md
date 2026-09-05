@@ -1,6 +1,6 @@
 ---
 kind: docs-index
-version: 13
+version: 14
 ---
 
 # Docs Index
@@ -35,8 +35,10 @@ version: 13
 - `manifests/runtimes/mlx-gen-0.33.1.json` and `manifests/models/wan2.2-i2v-a14b-bf16.json` for verified local runtime and model-package provenance.
 - `manifests/benchmarks/slice-007-wan2.2-i2v-a14b-motion-scout-results.json` for measured execution, resource, media, and rejected owner motion-review evidence.
 - `docs/implementation-results/slice-007-wan-2.2-i2v-a14b-motion-scout.md` for Slice 007 execution, owner rejection, verification, and closeout evidence.
-- `docs/slice-008-corrected-first-last-motion-scout.md` for the internal two-anchor retry, frozen prompts, direct Wan CLI route, approval gate, and no-inference boundary.
-- `benchmarks/slice-008-corrected-first-last-motion-scout.json` for exact anchor hashes, model/runtime identity, future parameters, motion gates, and pending approvals.
+- `docs/slice-008-corrected-first-last-motion-scout.md` for the internal two-anchor retry, frozen prompts, direct Wan CLI route, one-attempt authorization, and review boundary.
+- `benchmarks/slice-008-corrected-first-last-motion-scout.json` for exact anchor hashes, model/runtime identity, frozen parameters, one-attempt authorization, and motion gates.
+- `manifests/benchmarks/slice-008-corrected-first-last-motion-scout-results.json` for the single scout’s measured technical evidence and pending owner motion review.
+- `docs/implementation-results/slice-008-corrected-first-last-motion-scout.md` for execution, verification, review boundary, and closeout evidence.
 
 ## Retrieval Rule
 - Add only version-specific, non-obvious documentation pointers that the worker cannot recover reliably from code and config alone.

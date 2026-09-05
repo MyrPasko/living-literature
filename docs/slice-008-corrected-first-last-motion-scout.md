@@ -1,7 +1,7 @@
 ---
 project: Living Literature
 document: corrected-first-last-motion-scout
-status: anchors-and-prompts-approved
+status: inference-authorized-frozen
 verified: 2026-09-05
 slice: slice-008-corrected-first-last-motion-scout
 ---
@@ -10,12 +10,12 @@ slice: slice-008-corrected-first-last-motion-scout
 
 ## Purpose
 
-Prepare a bounded retry of the Wan2.2 I2V-A14B motion scout using explicit first- and last-frame bracket conditioning. This preparation addresses Slice 007’s reverse travel, wrong sail/wind direction, missing wind-driven surface waves, and excessive speed. It stops before video-model inference.
+Execute one bounded retry of the Wan2.2 I2V-A14B motion scout using explicit first- and last-frame bracket conditioning. The frozen configuration addresses Slice 007’s reverse travel, wrong sail/wind direction, missing wind-driven surface waves, and excessive speed. The slice stops after one technical result is presented for owner motion review.
 
 ## Exact Route
 
-- Reuse the existing pinned BF16 model package at revision `ef2a0bfe5b4ca7edb84c93f1675edb1a8bfe7d60`; no download.
-- Reuse MLX-Gen 0.33.1 at commit `23cee803f10aacdf943a9565f7cd67c25c825080`; no installation.
+- Reuse the existing pinned BF16 model package `AbstractFramework/wan2.2-i2v-a14b-diffusers-bf16` at revision `ef2a0bfe5b4ca7edb84c93f1675edb1a8bfe7d60`; no download.
+- Reuse MLX-Gen 0.33.1 at commit `23cee803f10aacdf943a9565f7cd67c25c825080` from wheel SHA-256 `1a19e6510a166cbe0fe4975146813fb61adf98f0e073abb4e63f27f012882d0a`; no installation.
 - Invoke the pinned direct Wan executable `mlxgen-generate-wan`, which exposes experimental A14B `--last-image` bracket conditioning. The generic `mlxgen generate` wrapper does not expose that option and must not be used for this route.
 - Remain sequential and allow at most one later attempt after denoising begins.
 
@@ -55,15 +55,20 @@ The first image places the same right-facing galley a modest distance left of th
 
 > reverse travel, stern-first movement, backward sailing, bow or ram pointing left, stern leading the ship, rapid movement, acceleration, sliding, sideways drift, speedboat wake, sail bending or bulging left, wind from right to left, limp sail, flat water, glassy sea, motionless water with a filled sail, wake ahead of the bow, foam on the right ahead of the ram, missing steering oar, exposed long ram, deformed hull, changing mast, changing rigging, camera pan, camera tracking, zoom, horizon movement, text, watermark, modern object
 
-## Future Scout Configuration
+## Frozen Scout Configuration
 
 - 448×256 requested source-aspect canvas;
 - 41 frames at 8 fps, 15 steps, seed 42;
 - guidance 4.0, guidance-2 3.0, flow shift 3.0, UniPC;
 - BF16, low-RAM, metadata on, prompt cache off;
 - Slice 007 safety thresholds unchanged;
-- one future attempt only, authorized when the owner pastes the self-contained Slice 008 inference prompt in the next session.
+- one attempt only after denoising begins, authorized by the owner’s pasted self-contained Slice 008 execution prompt;
+- output `outputs/slice-008/wan2.2-i2v-a14b-first-last-motion-scout-seed-42.mp4`;
+- durable marker `benchmarks/artifacts/slice-008/local-files-only-first-last-motion-scout-seed-42/generation-attempt-started.marker` created before launch;
+- no retry, tuning, alternate seed or sampler, adapter, duplicate, longer render, parallel inference, cloud inference, or API key.
+
+The guarded command is `./scripts/run-slice-008-motion-scout.sh`. It invokes the direct Wan executable with `--image-path`, `--last-image`, local-files-only flags, explicit inactive-denoiser release, metadata, JSON events, and no-replacement semantics. It samples memory, swap, required-volume disk, process-tree RSS, and thermal/performance state every 15 seconds and terminates the process tree at any frozen safety threshold.
 
 ## Approval Gate
 
-The owner approved the first image, the existing last image as the Slice 008 endpoint, and both frozen prompts on 2026-09-05. No inference is authorized in the current session. The self-contained next-session execution prompt is the authorization for exactly one bounded sequential inference attempt when pasted; the next session must still revalidate the committed configuration, local assets, model/runtime inventories, and live host safety conditions before denoising.
+The owner approved the first image, the existing last image as the Slice 008 endpoint, and both frozen prompts on 2026-09-05. The pasted self-contained execution prompt authorizes exactly one bounded sequential inference attempt in this session after the committed configuration, local assets, model/runtime inventories, direct CLI contract, and live host safety conditions pass again. Technical success does not decide the twelve motion hard gates or accept a production model.

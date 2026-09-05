@@ -2,10 +2,10 @@
 project: living-literature
 merged_baseline: slice-007-wan-2.2-i2v-a14b-motion-scout-complete-rejected
 active_slice: slice-008-corrected-first-last-motion-scout
-next_slice: slice-008-one-bounded-inference-after-next-session-prompt
+next_slice: slice-008-one-bounded-inference-then-owner-motion-review
 postponed_slice: slice-004-rights-ledger-foundation
 active_risks: ["production-model-not-accepted", "wan2.2-first-last-conditioning-unproven", "parallel-inference-out-of-scope"]
-verification_reality: ["wan-14b-local-offline-byte-identical", "wan-14b-motion-gates-failed", "wan2.2-i2v-bf16-benchmark-candidate", "ltx-2.5-local-apple-route-deferred", "slice-007-technical-pass-motion-rejected", "slice-008-anchors-and-prompts-approved-no-inference"]
+verification_reality: ["wan-14b-local-offline-byte-identical", "wan-14b-motion-gates-failed", "wan2.2-i2v-bf16-benchmark-candidate", "ltx-2.5-local-apple-route-deferred", "slice-007-technical-pass-motion-rejected", "slice-008-one-inference-authorized-not-yet-started"]
 authoritative_since: 2026-09-05
 ---
 
@@ -16,9 +16,9 @@ authoritative_since: 2026-09-05
 - Slice 005 proved local/offline Wan2.1 T2V 14B execution, but motion failed. Slice 007 passed Wan2.2 I2V-A14B technical checks, but reverse travel, wind/water causality, and speed failures rejected motion.
 
 ## Active Slice
-- Slice 008 anchors and prompts are approved. No video-model inference is authorized in this session.
+- Slice 008 anchors, prompts, guarded runner, and one sequential inference attempt are owner-authorized in the current session after renewed checks pass.
 - The pinned direct Wan CLI supports experimental A14B `--last-image`; the generic wrapper does not expose it.
-- Pasting the prepared next-session prompt authorizes one sequential scout after renewed configuration, inventory, and host-safety checks.
+- The attempt marker and declared output must be absent before launch; after denoising starts, no second attempt is authorized.
 
 ## Active Risks
 - No production model is accepted; Wan2.2 full-run resources and quality remain unmeasured.
