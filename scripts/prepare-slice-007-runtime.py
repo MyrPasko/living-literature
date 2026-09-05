@@ -30,7 +30,7 @@ def sha256(path: Path) -> str:
 
 
 def portable(path: Path) -> str:
-    resolved = path.resolve()
+    resolved = Path(os.path.abspath(path.expanduser()))
     try:
         return f"~/{resolved.relative_to(Path.home().resolve())}"
     except ValueError:
