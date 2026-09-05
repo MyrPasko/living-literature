@@ -4,7 +4,7 @@
   "source_repository": "Wan-AI/Wan2.2-I2V-A14B-Diffusers",
   "source_revision": "596658fd9ca6b7b71d5057529bbf319ecbc61d74",
   "license": "Apache-2.0",
-  "status": "planned",
+  "status": "complete",
   "expected_file_count": 44,
   "expected_size_bytes": 68791046058,
   "precision": "BF16",
