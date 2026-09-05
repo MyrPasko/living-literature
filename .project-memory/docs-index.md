@@ -1,6 +1,6 @@
 ---
 kind: docs-index
-version: 8
+version: 9
 ---
 
 # Docs Index
@@ -26,6 +26,9 @@ version: 8
 - `manifests/benchmarks/slice-002-wan-1.3b-results.json` for machine-readable runtime, memory, media, and quality results.
 - `manifests/models/wan2.1-t2v-14b.json` for the exact external-store file inventory, hashes, revision, and license evidence.
 - `manifests/benchmarks/slice-005-wan-14b-results.json` for machine-readable 14B runtime, safety, media, quality, and disposition evidence.
+- `docs/slice-006-wan-2.2-i2v-a14b-decision-gate.md` for the reopened flagship comparison, selected Wan2.2 I2V-A14B BF16 candidate, source-still gate, and bounded future scout/full/offline plan.
+- `manifests/decisions/slice-006-wan-2.2-i2v-a14b.json` for exact model/runtime/package provenance, corrected LTX-2.5 disposition, prompts, source-still provenance, benchmark parameters, and safety thresholds.
+- `docs/implementation-results/slice-006-wan-2.2-i2v-a14b-decision-gate.md` for Slice 006 execution, verification, review, and closeout evidence.
 
 ## Retrieval Rule
 - Add only version-specific, non-obvious documentation pointers that the worker cannot recover reliably from code and config alone.
