@@ -101,11 +101,16 @@ def runtime_probe(runtime_python: Path) -> dict[str, object]:
 def main() -> int:
     args = parse_args()
     repo_root = Path(__file__).resolve().parent.parent
+    args.runtime_root = args.runtime_root.expanduser().resolve()
+    allowed_root = (Path.home() / "models").resolve()
+    if not args.runtime_root.is_relative_to(allowed_root):
+        raise RuntimeError(f"Runtime root must remain below {allowed_root}")
     project_root = repo_root / "runtimes/mlx-gen-0.33.1"
     lockfile = project_root / "uv.lock"
     lock_text = lockfile.read_text(encoding="utf-8")
     if WHEEL_SHA256 not in lock_text or f'version = "{RUNTIME_VERSION}"' not in lock_text:
         raise RuntimeError("Runtime lockfile does not contain the pinned MLX-Gen wheel")
+    args.runtime_root.parent.mkdir(parents=True, exist_ok=True)
     if shutil.disk_usage(args.runtime_root.parent).free < MINIMUM_DISK_GIB * 1024**3:
         raise RuntimeError(f"Refusing runtime installation: {MINIMUM_DISK_GIB} GiB free required")
 
