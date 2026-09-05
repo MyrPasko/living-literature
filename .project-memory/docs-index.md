@@ -1,6 +1,6 @@
 ---
 kind: docs-index
-version: 14
+version: 15
 ---
 
 # Docs Index
@@ -39,6 +39,9 @@ version: 14
 - `benchmarks/slice-008-corrected-first-last-motion-scout.json` for exact anchor hashes, model/runtime identity, frozen parameters, one-attempt authorization, and motion gates.
 - `manifests/benchmarks/slice-008-corrected-first-last-motion-scout-results.json` for the single scout’s measured technical evidence and pending owner motion review.
 - `docs/implementation-results/slice-008-corrected-first-last-motion-scout.md` for execution, verification, review boundary, and closeout evidence.
+- `docs/slice-009-wan2.2-first-last-full-render.md` for the exact Wan2.1-to-Wan2.2 parameter mapping, one-attempt authorization, safety boundary, and owner review gate.
+- `benchmarks/slice-009-wan2.2-first-last-full-render.json` for the frozen anchors, prompts, model/runtime identities, BF16 parameters, and attempt policy.
+- `manifests/benchmarks/slice-009-wan2.2-first-last-full-render-results.json` and `docs/implementation-results/slice-009-wan2.2-first-last-full-render.md` after the attempt for measured technical, resource, media, and review evidence.
 
 ## Retrieval Rule
 - Add only version-specific, non-obvious documentation pointers that the worker cannot recover reliably from code and config alone.
