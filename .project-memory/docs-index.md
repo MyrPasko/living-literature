@@ -1,6 +1,6 @@
 ---
 kind: docs-index
-version: 9
+version: 12
 ---
 
 # Docs Index
@@ -29,6 +29,12 @@ version: 9
 - `docs/slice-006-wan-2.2-i2v-a14b-decision-gate.md` for the reopened flagship comparison, selected Wan2.2 I2V-A14B BF16 candidate, source-still gate, and bounded future scout/full/offline plan.
 - `manifests/decisions/slice-006-wan-2.2-i2v-a14b.json` for exact model/runtime/package provenance, corrected LTX-2.5 disposition, prompts, source-still provenance, benchmark parameters, and safety thresholds.
 - `docs/implementation-results/slice-006-wan-2.2-i2v-a14b-decision-gate.md` for Slice 006 execution, verification, review, and closeout evidence.
+- `docs/slice-007-wan-2.2-i2v-a14b-motion-scout.md` for the exact one-shot scout configuration, safety stops, motion hard gates, and prohibited follow-up work.
+- `benchmarks/slice-007-wan-2.2-i2v-a14b-motion-scout.json` for the immutable Slice 007 model, runtime, source-still, prompt, parameters, thresholds, and one-attempt policy.
+- `runtimes/mlx-gen-0.33.1/uv.lock` for the exact isolated Slice 007 runtime dependency graph and package hashes.
+- `manifests/runtimes/mlx-gen-0.33.1.json` and `manifests/models/wan2.2-i2v-a14b-bf16.json` for verified local runtime and model-package provenance.
+- `manifests/benchmarks/slice-007-wan2.2-i2v-a14b-motion-scout-results.json` for measured execution, resource, media, and rejected owner motion-review evidence.
+- `docs/implementation-results/slice-007-wan-2.2-i2v-a14b-motion-scout.md` for Slice 007 execution, owner rejection, verification, and closeout evidence.
 
 ## Retrieval Rule
 - Add only version-specific, non-obvious documentation pointers that the worker cannot recover reliably from code and config alone.

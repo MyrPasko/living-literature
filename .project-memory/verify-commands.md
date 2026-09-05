@@ -1,6 +1,6 @@
 ---
 kind: verification-commands
-version: 6
+version: 8
 ---
 
 # Verification Commands
@@ -35,6 +35,15 @@ version: 6
 - `.venv/bin/python scripts/verify-slice-006.py --allow-pending-still` while the owner source-still selection is pending
 - `.venv/bin/python scripts/verify-slice-006.py` after the selected still is pinned
 
+## Slice 007 Wan2.2 I2V-A14B Motion Scout
+- `.venv/bin/python scripts/verify-slice-007.py --configuration-only` before installing the isolated runtime or model package
+- `.venv/bin/python scripts/prepare-slice-007-runtime.py` to install and verify the pinned MLX-Gen 0.33.1 runtime below `~/models`
+- `.venv/bin/python scripts/download-wan2.2-i2v-a14b-bf16.py` to download and hash the exact pinned 44-file package below `~/models`
+- `.venv/bin/python scripts/verify-slice-007.py --preflight` before the one authorized generation attempt
+- `./scripts/run-slice-007-motion-scout.sh` exactly once; the runner refuses a second attempt after denoising starts
+- `.venv/bin/python scripts/verify-slice-007.py --allow-pending-review` after technical completion and before owner motion review
+- `.venv/bin/python scripts/verify-slice-007.py` after owner review; a failed review may leave unnecessary gates as `not_assessed` but must record at least one explicit failure
+
 ## Lockfile Recreation
 - `recreate_dir="$(mktemp -d /private/tmp/living-literature-lock.XXXXXX)"; UV_CACHE_DIR=.cache/uv UV_PYTHON_INSTALL_DIR=.python UV_PROJECT_ENVIRONMENT="$recreate_dir/.venv" uv sync --frozen --offline`
 
@@ -50,4 +59,5 @@ version: 6
 - Run host inference only after reviewing the fixed benchmark manifest and current safety thresholds. Never edit the runner while it is active.
 - Rights-ledger verification is not registered until its owning slice implements it.
 - Slice 005 stores new weights under `~/models/huggingface/hub`; `LIVING_LITERATURE_MODEL_STORE` may override that location explicitly.
-- Slice 006 is documentation and future-benchmark design only. Its verifier reads the existing ignored Slice 005 videos and ignored Slice 006 candidate stills; it performs no download or inference.
+- Slice 006 is documentation and benchmark design only. Its verifier reads the existing ignored Slice 005 videos and ignored Slice 006 candidate stills; it performs no download or inference.
+- Slice 007 permits one local-files-only scout after the exact runtime, model inventory, source still, host safety gates, and committed configuration pass. It does not permit a duplicate, tuning, or full render.

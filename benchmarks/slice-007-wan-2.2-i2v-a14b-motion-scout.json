@@ -1,0 +1,119 @@
+{
+  "benchmark_id": "slice-007-wan-2.2-i2v-a14b-motion-scout",
+  "locked_at_utc": "2026-09-05T07:25:21Z",
+  "authorized_at_utc": "2026-09-05T07:25:21Z",
+  "authorization": "Owner approved the exact Slice 007 implementation plan after review.",
+  "model": {
+    "repository": "AbstractFramework/wan2.2-i2v-a14b-diffusers-bf16",
+    "revision": "ef2a0bfe5b4ca7edb84c93f1675edb1a8bfe7d60",
+    "source_repository": "Wan-AI/Wan2.2-I2V-A14B-Diffusers",
+    "source_revision": "596658fd9ca6b7b71d5057529bbf319ecbc61d74",
+    "license": "Apache-2.0",
+    "file_count": 44,
+    "size_bytes": 68791046058,
+    "precision": "BF16",
+    "cache_root": "~/models/huggingface/hub"
+  },
+  "runtime": {
+    "name": "mlx-gen",
+    "version": "0.33.1",
+    "source_commit": "23cee803f10aacdf943a9565f7cd67c25c825080",
+    "wheel": "mlx_gen-0.33.1-py3-none-any.whl",
+    "wheel_sha256": "1a19e6510a166cbe0fe4975146813fb61adf98f0e073abb4e63f27f012882d0a",
+    "license": "MIT",
+    "environment_policy": "isolated_external_runtime_from_frozen_uv_lock"
+  },
+  "source_still": {
+    "candidate_id": "D",
+    "path": "outputs/slice-006/source-still-candidates/candidate-d-frame-048.png",
+    "sha256": "7e7f0a20ebaa62551cad700d7e17fecd0fdc68a7003c9e1eb2e846f7fd6ec0c7",
+    "width": 832,
+    "height": 480,
+    "source_video_sha256": "ce7a61c21ef0811062ea6229b3ddf89c6843bdc6569234cab060915bd39f2ad4",
+    "frame_number_zero_based": 48,
+    "timecode": "00:00:03.000",
+    "git_ignored": true
+  },
+  "prompt": "Single continuous five-second shot, locked-off wide side view. A Late Bronze Age Aegean galley with a long black hull, curved prow and stern, one mast and one rectangular square sail moves steadily from left to right across a dark wine-colored sea before dawn. The bow always points right; the stern remains left. Moderate wind blows from left to right, naturally filling the sail and raising aligned wavelets. A small bow wave splits outward at the prow; a narrow foamy wake begins only behind the stern and trails leftward. Heavy purple clouds drift slowly. Stable geometry, physically coherent motion, no camera movement, text, or modern objects. Preserve the approved input image’s ship design, palette, atmosphere, framing, and horizon.",
+  "negative_prompt": "reverse playback, backward sailing, wake or foam ahead of the bow, wake extending forward, perfectly still water with a filled sail, deformed sail, changing hull geometry, extra mast, camera dolly, pan, zoom, text, watermark, modern vessel, blurry image, JPEG artifacts",
+  "parameters": {
+    "task": "image-to-video",
+    "requested_width": 448,
+    "requested_height": 256,
+    "canvas_policy": "source-aspect",
+    "resize_mode": "resize",
+    "record_resolved_dimensions": true,
+    "frames": 41,
+    "fps": 8,
+    "steps": 15,
+    "seed": 42,
+    "guidance": 4.0,
+    "guidance_2": 3.0,
+    "flow_shift": 3.0,
+    "solver": "unipc",
+    "low_ram": true,
+    "metadata": true,
+    "prompt_cache": false,
+    "lora": null,
+    "lightning_adapter": null,
+    "prompt_extension": false,
+    "cache_acceleration": false,
+    "video_to_video_input": false,
+    "parallel_process": false,
+    "cloud_service": false,
+    "api_key": false,
+    "compile_transformer": false
+  },
+  "safety": {
+    "minimum_preflight_memory_free_percent": 90,
+    "required_preflight_swap_mb": 0,
+    "minimum_disk_before_download_gib": 180,
+    "minimum_disk_before_inference_gib": 120,
+    "stop_memory_free_percent": 10,
+    "stop_swap_above_mb": 8192,
+    "stop_disk_below_gib": 100,
+    "stop_progress_silence_seconds": 1200,
+    "maximum_run_seconds": 14400,
+    "network_mode": "local_files_only_with_hf_offline_flags",
+    "sequential_only": true
+  },
+  "run": {
+    "run_id": "local-files-only-motion-scout-seed-42",
+    "maximum_generation_attempts_after_denoising_starts": 1,
+    "output": "outputs/slice-007/wan2.2-i2v-a14b-motion-scout-seed-42.mp4"
+  },
+  "hard_gates": [
+    "bow_remains_right",
+    "stern_remains_left",
+    "ship_moves_continuously_left_to_right",
+    "wake_starts_only_behind_stern_and_trails_left",
+    "small_bow_wave_begins_at_prow",
+    "bow_wave_does_not_resemble_forward_wake",
+    "water_motion_matches_wind_and_filled_sail",
+    "sail_does_not_deform",
+    "ship_mast_hull_horizon_and_camera_remain_stable",
+    "no_text_watermark_modern_object_unsafe_content_or_major_collapse"
+  ],
+  "failure_policy": {
+    "reject_route_on_any_hard_gate_failure": true,
+    "no_automatic_rerun_after_denoising_starts": true,
+    "forbidden_after_failure": [
+      "seed_sweep",
+      "prompt_tuning",
+      "parameter_tuning",
+      "alternate_sampler_experiment",
+      "lora_experiment",
+      "unplanned_rerun",
+      "full_resolution_render"
+    ]
+  },
+  "slice_restrictions": {
+    "full_benchmark_authorized": false,
+    "offline_duplicate_authorized": false,
+    "parallel_inference_authorized": false,
+    "publication_authorized": false,
+    "production_model_accepted": false,
+    "memory_core_promotion_authorized": false,
+    "slice_004_remains_postponed": true
+  }
+}
