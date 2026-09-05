@@ -1,6 +1,6 @@
 ---
 kind: verification-commands
-version: 8
+version: 12
 ---
 
 # Verification Commands
@@ -44,6 +44,26 @@ version: 8
 - `.venv/bin/python scripts/verify-slice-007.py --allow-pending-review` after technical completion and before owner motion review
 - `.venv/bin/python scripts/verify-slice-007.py` after owner review; a failed review may leave unnecessary gates as `not_assessed` but must record at least one explicit failure
 
+## Slice 008 Corrected First/Last Motion Scout
+- `.venv/bin/python scripts/verify-slice-008.py --preflight` before the one authorized attempt; this checks both anchors, frozen configuration, exact runtime/model inventories, direct Wan CLI `--last-image` support, and live host safety
+- `.venv/bin/python scripts/verify-slice-007.py --preflight` immediately before launch to reuse the proven model/runtime inventory check
+- `./scripts/run-slice-008-motion-scout.sh` exactly once; the runner creates a durable marker before launch and refuses an existing marker or output
+- `.venv/bin/python scripts/verify-slice-008.py --allow-pending-review` after technical completion and before owner motion review
+- `.venv/bin/python scripts/verify-slice-008.py` after all twelve owner motion verdicts are recorded
+
+## Slice 009 Wan2.2 First/Last Full Render
+- `.venv/bin/python scripts/verify-slice-009.py --configuration-only` before committing the frozen pre-inference configuration
+- `.venv/bin/python scripts/verify-slice-009.py --preflight` after the exact configuration is committed and immediately before the single authorized attempt
+- `./scripts/run-slice-009-full-render.sh` exactly once; the runner repeats Slice 009 and Slice 007 preflights, creates a durable marker before launch, and refuses an existing marker or output
+- `.venv/bin/python scripts/verify-slice-009.py` after the pre-denoise resolution-contract rejection; a successful future route would instead use `--allow-pending-review` before owner review
+
+## Slice 010 Wan2.2 Exact First/Last Full Render
+- `.venv/bin/python scripts/verify-slice-010.py --configuration-only` before committing the frozen exact-resize configuration
+- `.venv/bin/python scripts/verify-slice-010.py --preflight` after the exact configuration is committed and immediately before the single authorized launch
+- `./scripts/run-slice-010-exact-full-render.sh` exactly once; the runner repeats Slice 010 and Slice 007 preflights and creates a new durable marker before launch
+- `.venv/bin/python scripts/verify-slice-010.py --allow-pending-review` after technical completion and before owner motion review
+- `.venv/bin/python scripts/verify-slice-010.py` after all twelve owner motion verdicts are recorded
+
 ## Lockfile Recreation
 - `recreate_dir="$(mktemp -d /private/tmp/living-literature-lock.XXXXXX)"; UV_CACHE_DIR=.cache/uv UV_PYTHON_INSTALL_DIR=.python UV_PROJECT_ENVIRONMENT="$recreate_dir/.venv" uv sync --frozen --offline`
 
@@ -61,3 +81,7 @@ version: 8
 - Slice 005 stores new weights under `~/models/huggingface/hub`; `LIVING_LITERATURE_MODEL_STORE` may override that location explicitly.
 - Slice 006 is documentation and benchmark design only. Its verifier reads the existing ignored Slice 005 videos and ignored Slice 006 candidate stills; it performs no download or inference.
 - Slice 007 permits one local-files-only scout after the exact runtime, model inventory, source still, host safety gates, and committed configuration pass. It does not permit a duplicate, tuning, or full render.
+- Slice 008’s two-anchor route must use the direct `mlxgen-generate-wan` executable because the generic wrapper does not expose `--last-image`.
+- Slice 008 execution permits exactly one local-files-only first/last-frame scout after renewed checks. It authorizes no retry, tuning, duplicate, full render, parallel inference, publication, or automatic Memory Core promotion.
+- Slice 009 stopped before denoising because `source-aspect` resolved 832×480 to 848×480. Its marker remains, no video exists, and no corrected launch or retry is authorized.
+- Slice 010 changes only the canvas policy to `exact-resize` and permits one local-files-only 832×480 launch with a new marker. It authorizes no retry, tuning, offline duplicate, parallel inference, publication, production acceptance, or automatic Memory Core promotion.

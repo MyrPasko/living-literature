@@ -1,6 +1,6 @@
 ---
 kind: docs-index
-version: 12
+version: 16
 ---
 
 # Docs Index
@@ -35,6 +35,15 @@ version: 12
 - `manifests/runtimes/mlx-gen-0.33.1.json` and `manifests/models/wan2.2-i2v-a14b-bf16.json` for verified local runtime and model-package provenance.
 - `manifests/benchmarks/slice-007-wan2.2-i2v-a14b-motion-scout-results.json` for measured execution, resource, media, and rejected owner motion-review evidence.
 - `docs/implementation-results/slice-007-wan-2.2-i2v-a14b-motion-scout.md` for Slice 007 execution, owner rejection, verification, and closeout evidence.
+- `docs/slice-008-corrected-first-last-motion-scout.md` for the internal two-anchor retry, frozen prompts, direct Wan CLI route, one-attempt authorization, and review boundary.
+- `benchmarks/slice-008-corrected-first-last-motion-scout.json` for exact anchor hashes, model/runtime identity, frozen parameters, one-attempt authorization, and motion gates.
+- `manifests/benchmarks/slice-008-corrected-first-last-motion-scout-results.json` for the single scout’s measured technical evidence and pending owner motion review.
+- `docs/implementation-results/slice-008-corrected-first-last-motion-scout.md` for execution, verification, review boundary, and closeout evidence.
+- `docs/slice-009-wan2.2-first-last-full-render.md` for the exact Wan2.1-to-Wan2.2 parameter mapping, one-attempt authorization, safety boundary, and owner review gate.
+- `benchmarks/slice-009-wan2.2-first-last-full-render.json` for the frozen anchors, prompts, model/runtime identities, BF16 parameters, and attempt policy.
+- `manifests/benchmarks/slice-009-wan2.2-first-last-full-render-results.json` and `docs/implementation-results/slice-009-wan2.2-first-last-full-render.md` after the attempt for measured technical, resource, media, and review evidence.
+- `docs/slice-010-wan2.2-exact-first-last-full-render.md` and `benchmarks/slice-010-wan2.2-exact-first-last-full-render.json` for the exact-resize correction, preserved full-render parameters, new one-attempt identity, and safety gate.
+- `manifests/benchmarks/slice-010-wan2.2-exact-first-last-full-render-results.json` and `docs/implementation-results/slice-010-wan2.2-exact-first-last-full-render.md` after execution for measured technical and owner-review evidence.
 
 ## Retrieval Rule
 - Add only version-specific, non-obvious documentation pointers that the worker cannot recover reliably from code and config alone.

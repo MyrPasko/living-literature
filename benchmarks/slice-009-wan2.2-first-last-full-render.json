@@ -1,0 +1,131 @@
+{
+  "benchmark_id": "slice-009-wan2.2-first-last-full-render",
+  "status": "inference-authorized-frozen",
+  "prepared_at_utc": "2026-09-05T12:30:03Z",
+  "execution_authorization": "Owner explicitly approved the proposed Slice 009 exact BF16 mapping and one full-resolution attempt in the current session.",
+  "baseline_commit": "6a3e3381b3190c348697557f60ed05b257c60115",
+  "model": {
+    "repository": "AbstractFramework/wan2.2-i2v-a14b-diffusers-bf16",
+    "revision": "ef2a0bfe5b4ca7edb84c93f1675edb1a8bfe7d60",
+    "source_repository": "Wan-AI/Wan2.2-I2V-A14B-Diffusers",
+    "source_revision": "596658fd9ca6b7b71d5057529bbf319ecbc61d74",
+    "license": "Apache-2.0",
+    "file_count": 44,
+    "size_bytes": 68791046058,
+    "precision": "BF16",
+    "cache_root": "~/models/huggingface/hub",
+    "reuse_existing_local_package": true,
+    "download_authorized": false
+  },
+  "runtime": {
+    "name": "mlx-gen",
+    "version": "0.33.1",
+    "source_commit": "23cee803f10aacdf943a9565f7cd67c25c825080",
+    "wheel_sha256": "1a19e6510a166cbe0fe4975146813fb61adf98f0e073abb4e63f27f012882d0a",
+    "environment_root": "~/models/living-literature/runtimes/mlx-gen-0.33.1",
+    "executable": "~/models/living-literature/runtimes/mlx-gen-0.33.1/.venv/bin/mlxgen-generate-wan",
+    "endpoint_option": "--last-image"
+  },
+  "anchors": {
+    "first": {
+      "path": "outputs/next-slice-reference-candidates/right-facing-aegean-galley-start-frame-candidate-v2.png",
+      "sha256": "9441f1a783f42ef1e7b605f0c4c6981462e071c46f49c7607a4ba6ab9533ffde",
+      "width": 1672,
+      "height": 940,
+      "status": "owner-approved"
+    },
+    "last": {
+      "path": "outputs/next-slice-reference-candidates/right-facing-aegean-galley-approved-end-frame-v1.png",
+      "sha256": "6c0f3d2ee62e4ff563a1fc02d6e42a3f255bc75d3bed8fa6210904f862ef85ce",
+      "width": 1672,
+      "height": 940,
+      "status": "owner-approved"
+    },
+    "rights_status": "internal-evaluation-only-unresolved-user-reference-lineage"
+  },
+  "prompt": "One continuous 5.125-second shot from a completely locked camera. Image 1 is the exact first frame; Image 2 is the exact last frame. The Late Bronze Age Aegean galley travels slowly and continuously from LEFT TO RIGHT, bow first. The unmistakable RIGHT-facing curved prow and short massive submerged ram lead the motion in every frame. The LEFT stern and its separate steering oar always trail behind. Movement is smooth and uniform at approximately 3 knots. Across the entire shot, the ship moves only the distance fixed by the two anchor images—approximately one-quarter of its hull length. No sudden acceleration, sliding, sideways drift, or speedboat motion. A steady 8–10-knot following wind blows strictly from LEFT TO RIGHT. The rectangular square sail remains taut and naturally filled. Its cloth belly and loose edges bow gently toward the RIGHT, downwind, throughout the shot. Because the sail is filled, small wind-driven wavelets and short ripples remain clearly visible across the entire sea surface. The water must never become flat, glassy, or motionless. A small bow wave begins precisely at the RIGHT-facing prow and submerged ram. A narrow, low-energy wake begins only behind the LEFT stern and trails leftward. No foam or wake appears ahead of the bow. Preserve the approved ship, ram, steering oar, hull, mast, rigging, sail, purple pre-dawn sky, wine-dark sea, horizon, framing, scale, and lighting. Keep geometry and camera completely stable.",
+  "negative_prompt": "reverse travel, stern-first movement, backward sailing, bow or ram pointing left, stern leading the ship, rapid movement, acceleration, sliding, sideways drift, speedboat wake, sail bending or bulging left, wind from right to left, limp sail, flat water, glassy sea, motionless water with a filled sail, wake ahead of the bow, foam on the right ahead of the ram, missing steering oar, exposed long ram, deformed hull, changing mast, changing rigging, camera pan, camera tracking, zoom, horizon movement, text, watermark, modern object",
+  "parameters": {
+    "task": "image-to-video",
+    "requested_width": 832,
+    "requested_height": 480,
+    "canvas_policy": "source-aspect",
+    "resize_mode": "resize",
+    "frames": 81,
+    "fps": 16,
+    "steps": 50,
+    "seed": 42,
+    "guidance": 5.0,
+    "guidance_2": 5.0,
+    "flow_shift": 5.0,
+    "solver": "unipc",
+    "precision": "BF16",
+    "quantization": null,
+    "low_ram": true,
+    "metadata": true,
+    "prompt_cache": false,
+    "release_inactive_denoiser": true,
+    "prompt_extension": false,
+    "cache_acceleration": false,
+    "parallel_process": false,
+    "cloud_service": false,
+    "api_key": false
+  },
+  "wan2_1_parameter_mapping": {
+    "directly_reused": ["requested_width", "requested_height", "frames", "fps", "steps", "seed", "solver"],
+    "mapped": {
+      "wan2_1_guidance_5_0": "guidance=5.0 and guidance_2=5.0",
+      "wan2_1_shift_5_0": "flow_shift=5.0"
+    },
+    "not_portable": "Wan2.1 8-bit quantization is model-specific; the pinned Wan2.2 package remains BF16."
+  },
+  "safety": {
+    "minimum_preflight_memory_free_percent": 90,
+    "required_preflight_swap_mb": 0,
+    "minimum_disk_before_inference_gib": 120,
+    "stop_memory_free_percent": 10,
+    "stop_swap_above_mb": 8192,
+    "stop_disk_below_gib": 100,
+    "stop_progress_silence_seconds": 1200,
+    "maximum_run_seconds": 14400,
+    "sample_interval_seconds": 15,
+    "network_mode": "local_files_only_with_hf_offline_flags",
+    "sequential_only": true
+  },
+  "run": {
+    "run_id": "local-files-only-first-last-full-render-seed-42",
+    "maximum_generation_attempts_after_denoising_starts": 1,
+    "attempt_marker": "benchmarks/artifacts/slice-009/local-files-only-first-last-full-render-seed-42/generation-attempt-started.marker",
+    "output": "outputs/slice-009/wan2.2-i2v-a14b-first-last-full-render-seed-42.mp4"
+  },
+  "hard_gates": [
+    "bow_and_submerged_ram_remain_right",
+    "stern_and_steering_oar_remain_left",
+    "ship_moves_continuously_left_to_right_bow_first",
+    "total_displacement_matches_anchor_distance",
+    "speed_is_slow_smooth_and_uniform",
+    "wind_reads_strictly_left_to_right",
+    "sail_bows_right_without_deformation",
+    "wavelets_remain_visible_across_entire_sea",
+    "small_bow_wave_begins_at_ram",
+    "low_energy_wake_starts_only_behind_stern",
+    "ship_horizon_and_camera_remain_stable",
+    "no_text_watermark_modern_object_or_major_collapse"
+  ],
+  "failure_policy": {
+    "reject_route_on_any_hard_gate_failure": true,
+    "no_automatic_rerun_after_denoising_starts": true
+  },
+  "slice_restrictions": {
+    "inference_authorized": true,
+    "download_authorized": false,
+    "runtime_installation_authorized": false,
+    "rerun_authorized": false,
+    "offline_duplicate_authorized": false,
+    "parallel_inference_authorized": false,
+    "production_model_accepted": false,
+    "publication_authorized": false,
+    "memory_core_promotion_authorized": false,
+    "slice_004_remains_postponed": true
+  }
+}

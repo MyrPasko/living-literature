@@ -2,28 +2,30 @@
 project: living-literature
 merged_baseline: slice-007-wan-2.2-i2v-a14b-motion-scout-complete-rejected
 active_slice: none
-next_slice: slice-008-corrected-first-last-motion-scout
+next_slice: owner-decision-on-corrected-hull-and-steering-oar-motion-scout
 postponed_slice: slice-004-rights-ledger-foundation
-active_risks: ["production-model-not-accepted", "wan2.2-corrected-motion-and-full-envelope-unmeasured", "parallel-inference-out-of-scope"]
-verification_reality: ["wan-14b-local-offline-byte-identical", "wan-14b-motion-gates-failed", "wan2.2-i2v-bf16-benchmark-candidate", "source-still-d-frame-48-pinned", "ltx-2.5-local-apple-route-deferred", "slice-006-no-inference", "slice-007-technical-pass-motion-rejected"]
+active_risks: ["production-model-not-accepted", "slice-008-reference-rights-unresolved", "slice-010-hull-pitch-and-steering-oar-motion-and-rigidity-failed", "parallel-inference-out-of-scope"]
+verification_reality: ["wan-14b-local-offline-byte-identical", "wan-14b-motion-gates-failed", "wan2.2-i2v-bf16-benchmark-candidate", "ltx-2.5-local-apple-route-deferred", "slice-008-motion-pass-internal-only", "slice-009-pre-denoise-resolution-rejected", "slice-010-technical-pass-motion-rejected"]
 authoritative_since: 2026-09-05
 ---
 
 # Current State
 
 ## Merged Baseline
-- Slices 001–003 and 005–007 are complete; Slice 004 remains postponed.
-- Slice 005 proved local/offline Wan2.1 T2V 14B execution, but motion failed. Slice 007 passed Wan2.2 I2V-A14B technical checks, but reverse travel, wind/water causality, and speed failures rejected motion.
+- Slices 001–003 and 005–007 are merged; Slice 004 is postponed. Slice 008 is complete and unmerged.
+- Slice 005 passed local/offline execution but failed motion; Slice 007 passed technically but failed motion.
 
 ## Active Slice
-- No slice is active. Slice 007 authorizes no further inference and Wan2.2 is not accepted for production.
-- Next is `slice-008-corrected-first-last-motion-scout`: internal-only anchor approval first, then separate pre-inference approval.
+- No inference slice is active. A corrected motion scout requires a new exact owner-approved slice.
+- The pinned direct Wan CLI supports experimental A14B `--last-image`; the generic wrapper does not expose it.
+- Slice 010 passed technical validation, but the owner rejected its hull pitch/bobbing and the steering oar's rowing-like motion and flexible-tail deformation; its marker/output exist and no retry is authorized.
 
 ## Active Risks
-- No production model is accepted; Wan2.2 full-run resources and quality remain unmeasured.
-- LTX-2.5 Fast is locally viable on Apple Silicon but deferred behind its custom license, gated weights, beta runtime, and missing comparable M5 Max evidence.
+- No production model is accepted; technical success cannot resolve anchor rights or decide motion quality.
+- The anchors remain prohibited for publication or production use.
+- LTX-2.5 Fast remains deferred behind licensing, runtime, and evidence gaps.
 - Parallel inference is out of scope; publication still requires human editorial and legal review.
 
 ## Verification Reality
 - Slice 001 and Slice 002/005 checks pass; Slice 006 used only public metadata and FFmpeg extraction from existing outputs.
-- Any download, runtime installation, motion scout, longer run, or concurrency claim requires a new exact owner-approved slice.
+- Slice 010 used its single launch. Any retry, offline duplicate, tuning, download, runtime installation, or concurrency claim requires another exact owner-approved slice.

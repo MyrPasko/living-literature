@@ -1,0 +1,57 @@
+{
+  "benchmark_id": "slice-009-wan2.2-first-last-full-render",
+  "run_id": "local-files-only-first-last-full-render-seed-42",
+  "status": "complete-pre-denoise-configuration-rejection",
+  "technical_verdict": "fail",
+  "disposition": "rejected-before-denoising-resolution-contract-mismatch",
+  "launch_attempts": 1,
+  "generation_attempts_after_denoising_started": 0,
+  "generation_attempts": 0,
+  "started_at_utc": "2026-09-05T12:40:09Z",
+  "evidence_recorded_at_utc": "2026-09-05T12:44:11Z",
+  "git_commit": "0a47698deb095cfea18b2335cb6d10278f99e562",
+  "failure": {
+    "phase": "runtime-start-before-denoising",
+    "reason": "canvas-policy-source-aspect-resolved-requested-832x480-to-848x480",
+    "requested_width": 832,
+    "requested_height": 480,
+    "resolved_width": 848,
+    "resolved_height": 480,
+    "denoising_events": 0,
+    "operator_action": "interrupted-process-tree-before-first-denoising-step",
+    "retry_performed": false
+  },
+  "output": {
+    "video_created": false,
+    "metadata_created": false,
+    "contact_sheet_created": false
+  },
+  "resources": {
+    "sample_count": 12,
+    "minimum_memory_free_percent": 89,
+    "maximum_swap_mb": 0.0,
+    "maximum_sampled_process_tree_rss_kb": 29133904,
+    "minimum_repo_disk_available_kb": 7359905460,
+    "minimum_model_disk_available_kb": 7359905460,
+    "thermal_warning_observed": false,
+    "performance_warning_observed": false
+  },
+  "owner_motion_review": {
+    "status": "not_applicable_no_video",
+    "hard_gates": {
+      "bow_and_submerged_ram_remain_right": "not_assessed",
+      "stern_and_steering_oar_remain_left": "not_assessed",
+      "ship_moves_continuously_left_to_right_bow_first": "not_assessed",
+      "total_displacement_matches_anchor_distance": "not_assessed",
+      "speed_is_slow_smooth_and_uniform": "not_assessed",
+      "wind_reads_strictly_left_to_right": "not_assessed",
+      "sail_bows_right_without_deformation": "not_assessed",
+      "wavelets_remain_visible_across_entire_sea": "not_assessed",
+      "small_bow_wave_begins_at_ram": "not_assessed",
+      "low_energy_wake_starts_only_behind_stern": "not_assessed",
+      "ship_horizon_and_camera_remain_stable": "not_assessed",
+      "no_text_watermark_modern_object_or_major_collapse": "not_assessed"
+    }
+  },
+  "next_authority_required": "A new explicit owner-approved slice is required to change canvas_policy to exact-resize and launch another process."
+}
