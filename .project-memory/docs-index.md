@@ -1,6 +1,6 @@
 ---
 kind: docs-index
-version: 10
+version: 11
 ---
 
 # Docs Index
@@ -33,6 +33,7 @@ version: 10
 - `benchmarks/slice-007-wan-2.2-i2v-a14b-motion-scout.json` for the immutable Slice 007 model, runtime, source-still, prompt, parameters, thresholds, and one-attempt policy.
 - `runtimes/mlx-gen-0.33.1/uv.lock` for the exact isolated Slice 007 runtime dependency graph and package hashes.
 - `manifests/runtimes/mlx-gen-0.33.1.json` and `manifests/models/wan2.2-i2v-a14b-bf16.json` for verified local runtime and model-package provenance.
+- `manifests/benchmarks/slice-007-wan2.2-i2v-a14b-motion-scout-results.json` for measured execution, resource, media, and pending owner-review evidence.
 
 ## Retrieval Rule
 - Add only version-specific, non-obvious documentation pointers that the worker cannot recover reliably from code and config alone.
