@@ -1,6 +1,6 @@
 ---
 kind: verification-commands
-version: 5
+version: 6
 ---
 
 # Verification Commands
@@ -31,6 +31,10 @@ version: 5
 - `./scripts/run-slice-005-benchmark.sh offline`
 - `.venv/bin/python scripts/verify-slice-005.py`
 
+## Slice 006 Wan2.2 I2V-A14B Decision Gate
+- `.venv/bin/python scripts/verify-slice-006.py --allow-pending-still` while the owner source-still selection is pending
+- `.venv/bin/python scripts/verify-slice-006.py` after the selected still is pinned
+
 ## Lockfile Recreation
 - `recreate_dir="$(mktemp -d /private/tmp/living-literature-lock.XXXXXX)"; UV_CACHE_DIR=.cache/uv UV_PYTHON_INSTALL_DIR=.python UV_PROJECT_ENVIRONMENT="$recreate_dir/.venv" uv sync --frozen --offline`
 
@@ -46,3 +50,4 @@ version: 5
 - Run host inference only after reviewing the fixed benchmark manifest and current safety thresholds. Never edit the runner while it is active.
 - Rights-ledger verification is not registered until its owning slice implements it.
 - Slice 005 stores new weights under `~/models/huggingface/hub`; `LIVING_LITERATURE_MODEL_STORE` may override that location explicitly.
+- Slice 006 is documentation and future-benchmark design only. Its verifier reads the existing ignored Slice 005 videos and ignored Slice 006 candidate stills; it performs no download or inference.

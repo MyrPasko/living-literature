@@ -1,0 +1,401 @@
+{
+  "decision_id": "slice-006-wan-2.2-i2v-a14b-decision-gate",
+  "decided_at_utc": "2026-09-04T19:59:02Z",
+  "status": "accepted_for_one_future_benchmark",
+  "task_type": "controller_led_investigation_decision_gate",
+  "production_model_accepted": false,
+  "comparison_reopened": {
+    "reason": "Official LTX Desktop releases now provide local LTX-2.5 Fast generation on Apple Silicon through MPS, invalidating the earlier API-only disposition.",
+    "owner_direction_received": true,
+    "reopened_at": "2026-09-04"
+  },
+  "selected_future_benchmark_candidate": {
+    "task": "image-to-video",
+    "official_model": {
+      "repository": "Wan-AI/Wan2.2-I2V-A14B-Diffusers",
+      "revision": "596658fd9ca6b7b71d5057529bbf319ecbc61d74",
+      "license": "Apache-2.0",
+      "pipeline_tag": "image-to-video",
+      "repository_file_count": 50,
+      "repository_size_bytes": 126204155463
+    },
+    "runtime": {
+      "name": "mlx-gen",
+      "version": "0.33.1",
+      "repository": "lpalbou/mlx-gen",
+      "source_commit": "23cee803f10aacdf943a9565f7cd67c25c825080",
+      "wheel": "mlx_gen-0.33.1-py3-none-any.whl",
+      "wheel_sha256": "1a19e6510a166cbe0fe4975146813fb61adf98f0e073abb4e63f27f012882d0a",
+      "license": "MIT"
+    },
+    "prepared_package": {
+      "repository": "AbstractFramework/wan2.2-i2v-a14b-diffusers-bf16",
+      "revision": "ef2a0bfe5b4ca7edb84c93f1675edb1a8bfe7d60",
+      "license": "Apache-2.0",
+      "file_count": 44,
+      "size_bytes": 68791046058,
+      "size_gib_approx": 64.07,
+      "runtime_precision": "BF16"
+    },
+    "execution_policy": "sequential_only",
+    "production_acceptance": "not_accepted",
+    "rationale": "Wan2.2 I2V-A14B combines Apache-2.0 provenance, exact prepared-package inventory, a pinned MLX-Gen wheel and source commit, verified native Apple Silicon support, and published M5 Max resource evidence. LTX-2.5 Fast is now locally viable but remains deferred because its Apple path is newly released beta software, its 22B weights are gated under a custom community license, and no comparable pinned M5 Max runtime, determinism, or offline proof profile is published."
+  },
+  "precision_decision": {
+    "selected": "BF16",
+    "q8_disposition": "not_selected_for_memory_reduction",
+    "evidence": "MLX-Gen 0.33.1 documentation states that Wan q8 transformer-block linears are dequantized to BF16 at load after the 2026-06-12 runtime-precision fix, so q8 is a storage and download saving rather than a runtime-memory saving."
+  },
+  "alternatives": [
+    {
+      "candidate": "Wan2.2-TI2V-5B",
+      "disposition": "retained_smaller_faster_fallback",
+      "reason": "Native MLX-Gen T2V and first-frame I2V support is documented, but it is not the quality-first candidate."
+    },
+    {
+      "candidate": "LTX-2.5-Fast-22B-distilled",
+      "model_repository": "Lightricks/LTX-2.5",
+      "model_revision": "5e6e71018ee1756ed329b697a7b4aedc934dfce9",
+      "model_license": "LTX-2.x Community License Agreement",
+      "model_license_sha256": "be75acae5c99b0fb16ed6cfbf8f731e5121a729bef112d20337699407e796451",
+      "model_repository_file_count": 17,
+      "model_repository_size_bytes": 200853702175,
+      "minimum_fully_local_file_count": 5,
+      "minimum_fully_local_size_bytes": 71114917404,
+      "desktop_runtime_repository": "Lightricks/LTX-Desktop",
+      "desktop_runtime_revision": "68cd86c15e5fd25f56229ea63c0dbcb0338f7812",
+      "desktop_runtime_release": "v1.2.7",
+      "desktop_runtime_license": "Apache-2.0",
+      "source_runtime_repository": "Lightricks/LTX-2",
+      "source_runtime_revision": "a95ab856bf29407b6b066ede0abe1846050db56c",
+      "apple_silicon_path": "local MPS generation with a local text encoder; no API key is required when fully local mode is selected",
+      "disposition": "viable_but_deferred_for_separate_license_and_runtime_evidence_gate",
+      "reason": "The API-only rejection is obsolete. The route remains a poor first scout relative to the pinned Wan MLX route because the local Apple implementation is new beta software, the weights are gated under a custom and update-sensitive license, and the public sources provide no comparable pinned M5 Max resource, deterministic-repeat, or network-denied evidence."
+    },
+    {
+      "candidate": "HunyuanVideo-1.5",
+      "runtime_repository": "Tencent-Hunyuan/HunyuanVideo-1.5",
+      "runtime_revision_reviewed": "60783e704160023913bee78f0b47036d393d4dfa",
+      "license": "Tencent Hunyuan Community License Agreement",
+      "disposition": "rejected_for_this_slice",
+      "reason": "The official runtime requires Linux, NVIDIA, and CUDA, and the model license excludes the European Union, United Kingdom, and South Korea from its territory."
+    },
+    {
+      "candidate": "Mochi-1-Preview",
+      "runtime_repository": "genmoai/mochi",
+      "runtime_revision_reviewed": "0c86aebf386e6622deadfb47ff1996878cefc0ac",
+      "license": "Apache-2.0",
+      "disposition": "rejected_for_this_slice",
+      "reason": "It is an older text-to-video-only research preview; the official implementation recommends H100-class hardware and provides no proven native Apple Silicon route or first-frame conditioning comparable to the selected I2V path."
+    },
+    {
+      "candidate": "FLF2V_trajectory_control_VACE_and_related_forks",
+      "disposition": "deferred",
+      "reason": "No reviewed option combines flagship quality, acceptable provenance and licensing, and a comparably verified native Apple Silicon runtime."
+    }
+  ],
+  "source_still_gate": {
+    "status": "owner_selected",
+    "candidate_directory": "outputs/slice-006/source-still-candidates",
+    "git_ignored": true,
+    "candidate_media_committed": false,
+    "source_videos": [
+      {
+        "path": "outputs/slice-005/wan-14b-online-seed-42.mp4",
+        "sha256": "ce7a61c21ef0811062ea6229b3ddf89c6843bdc6569234cab060915bd39f2ad4",
+        "size_bytes": 708216
+      },
+      {
+        "path": "outputs/slice-005/wan-14b-offline-seed-42.mp4",
+        "sha256": "ce7a61c21ef0811062ea6229b3ddf89c6843bdc6569234cab060915bd39f2ad4",
+        "size_bytes": 708216
+      }
+    ],
+    "source_media": {
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "width": 832,
+      "height": 480,
+      "frames": 81,
+      "fps": 16,
+      "duration_seconds": 5.0625,
+      "online_offline_byte_identical": true
+    },
+    "extraction_command": "ffmpeg -hide_banner -loglevel error -i outputs/slice-005/wan-14b-online-seed-42.mp4 -vf \"select='eq(n,0)+eq(n,16)+eq(n,32)+eq(n,48)+eq(n,64)+eq(n,80)'\" -fps_mode vfr outputs/slice-006/source-still-candidates/sample-%02d.png",
+    "contact_sheet_command": "ffmpeg -y -hide_banner -loglevel error -framerate 1 -pattern_type glob -i 'outputs/slice-006/source-still-candidates/candidate-*.png' -vf 'scale=416:240,tile=3x2' -frames:v 1 outputs/slice-006/source-still-candidates/contact-sheet.png",
+    "contact_sheet": {
+      "path": "outputs/slice-006/source-still-candidates/contact-sheet.png",
+      "sha256": "7f63b9a06806ced52125e416fc0608459553256f6fa30c1f32240cf176b9b7b3",
+      "width": 1248,
+      "height": 480,
+      "order": "left-to-right, top row A-C, bottom row D-F"
+    },
+    "candidates": [
+      {
+        "id": "A",
+        "path": "outputs/slice-006/source-still-candidates/candidate-a-frame-000.png",
+        "frame_number_zero_based": 0,
+        "timecode": "00:00:00.000",
+        "sha256": "8c38d38a1a0a64aa66fd3ea9323ad4ef79e9e276c95663a6a9b6c7c6af34f299",
+        "width": 832,
+        "height": 480
+      },
+      {
+        "id": "B",
+        "path": "outputs/slice-006/source-still-candidates/candidate-b-frame-016.png",
+        "frame_number_zero_based": 16,
+        "timecode": "00:00:01.000",
+        "sha256": "ede310f9423fdc3a7bcc70a75f4523768e0dac37a9dfd8e0022cf5a5ae7b4388",
+        "width": 832,
+        "height": 480
+      },
+      {
+        "id": "C",
+        "path": "outputs/slice-006/source-still-candidates/candidate-c-frame-032.png",
+        "frame_number_zero_based": 32,
+        "timecode": "00:00:02.000",
+        "sha256": "bbf50425e086d8dd4689146bb77eb0a2cc368a9f55bf8e6af5a92f449abc1aa0",
+        "width": 832,
+        "height": 480
+      },
+      {
+        "id": "D",
+        "path": "outputs/slice-006/source-still-candidates/candidate-d-frame-048.png",
+        "frame_number_zero_based": 48,
+        "timecode": "00:00:03.000",
+        "sha256": "7e7f0a20ebaa62551cad700d7e17fecd0fdc68a7003c9e1eb2e846f7fd6ec0c7",
+        "width": 832,
+        "height": 480
+      },
+      {
+        "id": "E",
+        "path": "outputs/slice-006/source-still-candidates/candidate-e-frame-064.png",
+        "frame_number_zero_based": 64,
+        "timecode": "00:00:04.000",
+        "sha256": "3d32f50e2d49073dac33e09ef3bc1c930daa9970e9213afcb8922074448d85c1",
+        "width": 832,
+        "height": 480
+      },
+      {
+        "id": "F",
+        "path": "outputs/slice-006/source-still-candidates/candidate-f-frame-080.png",
+        "frame_number_zero_based": 80,
+        "timecode": "00:00:05.000",
+        "sha256": "dd63430af36a10a796ab4a753d6e20a0e535f1e7687a3331747dba6d77dcf53f",
+        "width": 832,
+        "height": 480
+      }
+    ],
+    "selected": {
+      "candidate_id": "D",
+      "owner_selection": "left image in the second row",
+      "selected_at": "2026-09-04",
+      "path": "outputs/slice-006/source-still-candidates/candidate-d-frame-048.png",
+      "sha256": "7e7f0a20ebaa62551cad700d7e17fecd0fdc68a7003c9e1eb2e846f7fd6ec0c7",
+      "width": 832,
+      "height": 480,
+      "frame_number_zero_based": 48,
+      "timecode": "00:00:03.000",
+      "source_video_sha256": "ce7a61c21ef0811062ea6229b3ddf89c6843bdc6569234cab060915bd39f2ad4",
+      "committed": false,
+      "git_ignored": true
+    }
+  },
+  "prompts": {
+    "positive": "Single continuous five-second shot, locked-off wide side view. A Late Bronze Age Aegean galley with a long black hull, curved prow and stern, one mast and one rectangular square sail moves steadily from left to right across a dark wine-colored sea before dawn. The bow always points right; the stern remains left. Moderate wind blows from left to right, naturally filling the sail and raising aligned wavelets. A small bow wave splits outward at the prow; a narrow foamy wake begins only behind the stern and trails leftward. Heavy purple clouds drift slowly. Stable geometry, physically coherent motion, no camera movement, text, or modern objects. Preserve the approved input image’s ship design, palette, atmosphere, framing, and horizon.",
+    "negative": "reverse playback, backward sailing, wake or foam ahead of the bow, wake extending forward, perfectly still water with a filled sail, deformed sail, changing hull geometry, extra mast, camera dolly, pan, zoom, text, watermark, modern vessel, blurry image, JPEG artifacts"
+  },
+  "future_motion_scout": {
+    "slice_id": "slice-007-wan-2.2-i2v-a14b-motion-scout",
+    "requires_separate_owner_approved_plan": true,
+    "model_and_runtime": "exactly_the_selected_candidate_above",
+    "input_still": "exact_owner_selected_still_from_source_still_gate",
+    "precision": "BF16",
+    "requested_width": 448,
+    "requested_height": 256,
+    "canvas_policy": "source_aspect",
+    "record_resolved_dimensions": true,
+    "frames": 41,
+    "fps": 8,
+    "approximate_duration_seconds": 5.1,
+    "denoising_steps": 15,
+    "seed": 42,
+    "guidance": 4.0,
+    "guidance_2": 3.0,
+    "flow_shift": 3.0,
+    "solver": "unipc",
+    "low_ram": true,
+    "metadata": true,
+    "lora": null,
+    "lightning_adapter": null,
+    "prompt_extension": false,
+    "cache_acceleration": false,
+    "video_to_video_input": false,
+    "parallel_process": false,
+    "cloud_service": false,
+    "api_key": false,
+    "local_files_only_after_authorized_download": true,
+    "record_every_effective_runtime_parameter": true,
+    "hard_gates": [
+      "bow_remains_right",
+      "stern_remains_left",
+      "ship_moves_continuously_left_to_right",
+      "wake_starts_only_behind_stern_and_trails_left",
+      "small_bow_wave_begins_at_prow",
+      "bow_wave_does_not_resemble_forward_wake",
+      "water_motion_matches_wind_and_filled_sail",
+      "sail_does_not_deform",
+      "ship_mast_hull_horizon_and_camera_remain_stable",
+      "no_text_watermark_modern_object_unsafe_content_or_major_collapse"
+    ],
+    "failure_policy": {
+      "reject_route_on_any_hard_gate_failure": true,
+      "forbidden_after_failure": [
+        "seed_sweep",
+        "prompt_tuning",
+        "parameter_tuning",
+        "alternate_sampler_experiment",
+        "lora_experiment",
+        "unplanned_rerun",
+        "full_resolution_render"
+      ]
+    }
+  },
+  "later_full_benchmark": {
+    "requires_explicit_owner_acceptance_of_motion_scout": true,
+    "same_frozen_inputs": [
+      "model",
+      "runtime",
+      "prepared_package",
+      "input_still",
+      "positive_prompt",
+      "negative_prompt",
+      "seed",
+      "guidance",
+      "guidance_2",
+      "flow_shift",
+      "solver",
+      "BF16_precision"
+    ],
+    "requested_width": 832,
+    "requested_height": 480,
+    "canvas_policy": "source_aspect",
+    "record_resolved_dimensions": true,
+    "frames": 81,
+    "fps": 16,
+    "denoising_steps": 40,
+    "record_evidence": [
+      "effective_runtime_parameters",
+      "memory",
+      "swap",
+      "disk",
+      "thermal_state",
+      "decode",
+      "metadata",
+      "sha256"
+    ],
+    "network_denied_repeat_after_human_quality_pass_only": true
+  },
+  "offline_proof": {
+    "freeze_before_inference": true,
+    "requirements": [
+      "exact_allowlisted_model_inventory",
+      "separately_recorded_download_operation",
+      "local_model_resolution_after_download",
+      "HF_HUB_OFFLINE",
+      "TRANSFORMERS_OFFLINE",
+      "DIFFUSERS_OFFLINE",
+      "local_files_only",
+      "macOS_deny_network_sandbox",
+      "loopback_bind_denial_preflight",
+      "full_video_decode",
+      "media_property_verification",
+      "sha256_comparison"
+    ],
+    "deterministic_acceptance": "byte_identical_output_unless_primary_runtime_documentation_proves_before_inference_that_the_backend_cannot_provide_byte_identity_and_slice_006_defines_a_narrower_criterion",
+    "may_not_be_weakened_after_results": true
+  },
+  "resource_plan": {
+    "published_profile": {
+      "source": "MLX-Gen 0.33.1 pinned quantization documentation",
+      "hardware": "Apple M5 Max",
+      "precision": "BF16",
+      "width": 384,
+      "height": 384,
+      "frames": 33,
+      "steps": 12,
+      "fps": 8,
+      "mlx_peak_gib": 28.2,
+      "maximum_rss_gib": 31.8,
+      "full_process_physical_peak_gib": 33.7,
+      "runtime_seconds": 228.2,
+      "guarantees_full_benchmark": false
+    },
+    "full_run_estimate": {
+      "kind": "planning_estimate_not_measurement",
+      "mlx_peak_gb": {
+        "minimum": 35,
+        "maximum": 60
+      },
+      "process_footprint_gb": {
+        "minimum": 50,
+        "maximum": 90
+      },
+      "expected_swap_gib": 0,
+      "runtime_hours": {
+        "minimum": 1.0,
+        "maximum": 3.5
+      },
+      "confidence": "low",
+      "maximum_runtime_hours": 4
+    },
+    "future_preflight": {
+      "minimum_system_memory_free_percent": 90,
+      "required_swap_gib": 0,
+      "no_other_model_inference_process": true,
+      "parallel_execution": false,
+      "no_thermal_or_performance_warning": true,
+      "minimum_free_disk_gib_before_download_or_preparation": 180,
+      "minimum_free_disk_gib_before_inference": 120
+    },
+    "future_automatic_stops": {
+      "memory_free_percent_at_or_below": 10,
+      "swap_gib_above": 8,
+      "free_disk_gib_below": 100,
+      "thermal_state": [
+        "serious",
+        "critical"
+      ],
+      "performance_warning": true,
+      "no_denoising_progress_minutes": 20,
+      "undeclared_network_or_file_request": true,
+      "unexpected_process_exit": true,
+      "elapsed_runtime_hours_above": 4
+    }
+  },
+  "slice_006_authority": {
+    "weights_downloaded": false,
+    "runtime_installed": false,
+    "inference_ran": false,
+    "image_generated": false,
+    "cloud_inference_used": false,
+    "api_key_used": false,
+    "parallel_inference_attempted_or_authorized": false,
+    "content_published": false,
+    "memory_core_promotion_applied": false
+  },
+  "source_access_dates": {
+    "Wan-Video/Wan2.2": "2026-09-04",
+    "Wan-AI/Wan2.2-I2V-A14B-Diffusers": "2026-09-04",
+    "lpalbou/mlx-gen": "2026-09-04",
+    "PyPI/mlx-gen/0.33.1": "2026-09-04",
+    "AbstractFramework/wan2.2-i2v-a14b-diffusers-bf16": "2026-09-04",
+    "Lightricks/LTX-2.5": "2026-09-04",
+    "Lightricks/LTX-Desktop": "2026-09-04",
+    "Lightricks/LTX-2": "2026-09-04",
+    "Tencent-Hunyuan/HunyuanVideo-1.5": "2026-09-04",
+    "genmoai/mochi": "2026-09-04"
+  },
+  "next_slice": "slice-007-wan-2.2-i2v-a14b-motion-scout",
+  "postponed_slice": "slice-004-rights-ledger-foundation"
+}
