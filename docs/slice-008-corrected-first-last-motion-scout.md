@@ -1,7 +1,7 @@
 ---
 project: Living Literature
 document: corrected-first-last-motion-scout
-status: inference-authorized-frozen
+status: technical-pass-pending-owner-motion-review
 verified: 2026-09-05
 slice: slice-008-corrected-first-last-motion-scout
 ---
@@ -72,3 +72,7 @@ The guarded command is `./scripts/run-slice-008-motion-scout.sh`. It invokes the
 ## Approval Gate
 
 The owner approved the first image, the existing last image as the Slice 008 endpoint, and both frozen prompts on 2026-09-05. The pasted self-contained execution prompt authorizes exactly one bounded sequential inference attempt in this session after the committed configuration, local assets, model/runtime inventories, direct CLI contract, and live host safety conditions pass again. Technical success does not decide the twelve motion hard gates or accept a production model.
+
+## Technical Execution
+
+The single authorized attempt ran from 2026-09-05 11:30:14Z to 11:34:01Z and closed normally in 227 seconds without a safety stop. It produced a 448×256 H.264/YUV420P file with 41 frames at 8 fps and 5.125 seconds duration. The output SHA-256 is `c931088d0f3194c2e0e48c1f6b838c548ed0f75bc004e93ddfb9b26472f30693`; full decode passed. Owner motion review remains pending, and the existing marker and output prohibit another attempt.
