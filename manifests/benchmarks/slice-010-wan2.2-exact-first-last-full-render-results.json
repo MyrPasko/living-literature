@@ -1,9 +1,9 @@
 {
   "benchmark_id": "slice-010-wan2.2-exact-first-last-full-render",
   "run_id": "local-files-only-exact-first-last-full-render-seed-42",
-  "status": "pending-owner-motion-review",
+  "status": "complete",
   "technical_verdict": "pass",
-  "disposition": "pending",
+  "disposition": "rejected-motion",
   "generation_attempts": 1,
   "model_revision": "ef2a0bfe5b4ca7edb84c93f1675edb1a8bfe7d60",
   "runtime_version": "0.33.1",
@@ -58,22 +58,31 @@
     "sampled_frame_numbers_zero_based": [0, 16, 32, 48, 64, 80]
   },
   "owner_motion_review": {
-    "status": "pending",
-    "reviewed_at_utc": null,
-    "notes": null,
+    "status": "fail",
+    "reviewed_at_utc": "2026-09-05T15:43:00Z",
+    "notes": "The owner found the image sharp and realistic, with the intended atmosphere, colour palette, ship silhouette, and sail silhouette. The route is rejected because the hull pitches, bobs, and seesaws fore and aft as if being rocked, while the steering oar cycles like a propulsion oar and bends like a flexible tail instead of remaining a rigid, stable steering control. Unmentioned hard gates remain not assessed because these defects already reject the route.",
     "hard_gates": {
-      "bow_and_submerged_ram_remain_right": "pending",
-      "stern_and_steering_oar_remain_left": "pending",
-      "ship_moves_continuously_left_to_right_bow_first": "pending",
-      "total_displacement_matches_anchor_distance": "pending",
-      "speed_is_slow_smooth_and_uniform": "pending",
-      "wind_reads_strictly_left_to_right": "pending",
-      "sail_bows_right_without_deformation": "pending",
-      "wavelets_remain_visible_across_entire_sea": "pending",
-      "small_bow_wave_begins_at_ram": "pending",
-      "low_energy_wake_starts_only_behind_stern": "pending",
-      "ship_horizon_and_camera_remain_stable": "pending",
-      "no_text_watermark_modern_object_or_major_collapse": "pending"
+      "bow_and_submerged_ram_remain_right": "not_assessed",
+      "stern_and_steering_oar_remain_left": "not_assessed",
+      "ship_moves_continuously_left_to_right_bow_first": "not_assessed",
+      "total_displacement_matches_anchor_distance": "not_assessed",
+      "speed_is_slow_smooth_and_uniform": "not_assessed",
+      "wind_reads_strictly_left_to_right": "not_assessed",
+      "sail_bows_right_without_deformation": "not_assessed",
+      "wavelets_remain_visible_across_entire_sea": "not_assessed",
+      "small_bow_wave_begins_at_ram": "not_assessed",
+      "low_energy_wake_starts_only_behind_stern": "not_assessed",
+      "ship_horizon_and_camera_remain_stable": "fail",
+      "no_text_watermark_modern_object_or_major_collapse": "not_assessed"
+    },
+    "additional_findings": {
+      "visual_sharpness_and_realism": "pass",
+      "atmosphere": "pass",
+      "colour_palette": "pass",
+      "ship_and_sail_silhouettes": "pass",
+      "hull_has_no_pitch_heave_bob_or_fore_aft_seesaw": "fail",
+      "steering_oar_does_not_row_or_paddle": "fail",
+      "steering_oar_remains_rigid_without_bending_or_tail_motion": "fail"
     }
   },
   "rights_status": "internal-evaluation-only-unresolved-user-reference-lineage",

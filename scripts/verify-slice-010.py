@@ -226,6 +226,13 @@ def verify_result(repo_root: Path, benchmark: dict, allow_pending_review: bool) 
         require(not allow_pending_review and review["status"] in {"pass", "fail"}, "review state invalid")
         verdicts = set(review["hard_gates"].values())
         require((review["status"] == "pass" and verdicts == {"pass"}) or (review["status"] == "fail" and "fail" in verdicts), "gate verdict inconsistency")
+        require(result["status"] == "complete", "completed review status drift")
+        require(
+            (review["status"] == "pass" and result["disposition"] == "accepted-motion")
+            or (review["status"] == "fail" and result["disposition"] == "rejected-motion"),
+            "review disposition drift",
+        )
+        require(review["reviewed_at_utc"] and review["notes"], "completed review evidence missing")
 
 
 def main() -> int:

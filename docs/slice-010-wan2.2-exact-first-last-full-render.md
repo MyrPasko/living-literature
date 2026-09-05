@@ -1,7 +1,7 @@
 ---
 project: Living Literature
 document: wan2.2-exact-first-last-full-render
-status: pending-owner-motion-review
+status: complete-rejected-motion
 verified: 2026-09-05
 slice: slice-010-wan2.2-exact-first-last-full-render
 ---
@@ -50,4 +50,8 @@ No retry, tuning, alternate seed/sampler, adapter, offline duplicate, parallel/c
 
 ## Technical Execution
 
-The single launch completed normally in 7,354 seconds. It produced an exact 832×480, 81-frame H.264 video at 16 fps with SHA-256 `de81c77df5cbf6d9d4b25ecc2012f9db130e7ec853671cda947b066b53995205`. Full decode passed, swap remained zero, no thermal/performance warning occurred, and the result now awaits owner motion review.
+The single launch completed normally in 7,354 seconds. It produced an exact 832×480, 81-frame H.264 video at 16 fps with SHA-256 `de81c77df5cbf6d9d4b25ecc2012f9db130e7ec853671cda947b066b53995205`. Full decode passed, swap remained zero, and no thermal/performance warning occurred.
+
+## Owner Motion Verdict
+
+The owner passed the image sharpness and realism, atmosphere, colour palette, ship silhouette, and sail silhouette. Motion failed because the hull pitches, bobs, and seesaws fore and aft as if rocked from bow to stern. The steering oar also cycles like a propulsion oar and bends like a flexible tail instead of remaining a rigid, stable steering control. The route is therefore `rejected-motion`; no retry is authorized by Slice 010.

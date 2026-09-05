@@ -1,7 +1,7 @@
 ---
 task_id: slice-010-wan2.2-exact-first-last-full-render
 task_type: feature
-status: pending-owner-motion-review
+status: complete-rejected-motion
 branch: feature/slice-010-wan2-2-exact-full-render
 date: 2026-09-05
 ---
@@ -10,7 +10,7 @@ date: 2026-09-05
 
 ## Outcome
 
-Slice 010 completed exactly one authorized Wan2.2 I2V-A14B BF16 first/last-frame full render. The output passed technical validation and is pending the owner’s twelve-gate motion review. This does not accept a production model, resolve anchor rights, or authorize publication.
+Slice 010 completed exactly one authorized Wan2.2 I2V-A14B BF16 first/last-frame full render. The output passed technical validation but the owner rejected its motion: the hull pitches, bobs, and seesaws fore and aft, and the steering oar performs a rowing cycle and bends like a flexible tail instead of behaving as a rigid, stable steering control. This does not accept a production model, resolve anchor rights, or authorize publication.
 
 ## Execution
 
@@ -42,6 +42,8 @@ The configuration-only check proved that only the Slice 009 canvas policy change
 
 The attempt marker remains and the runner refuses another launch. No retry, download, installation, offline duplicate, tuning, parallel/cloud inference, publication, production acceptance, Memory Core promotion, push, pull request, or merge occurred.
 
-## Owner Review Boundary
+## Owner Motion Review
 
-The owner must assess all twelve frozen motion gates against the video. Technical success alone does not determine motion acceptance.
+The owner passed the image sharpness and realism, atmosphere, colour palette, ship silhouette, and sail silhouette. The stability hard gate failed because the hull pitches and bobs unnaturally. Separate functional defects record that the steering oar rows or paddles instead of making, at most, small steering corrections and that it bends like a flexible tail instead of retaining a rigid wooden form. The other frozen hard gates remain `not_assessed` because any observed motion defect is sufficient to reject the route.
+
+Slice 010 is complete with disposition `rejected-motion`. Its single launch has been consumed, and no retry is authorized.
