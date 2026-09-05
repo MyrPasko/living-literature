@@ -1,11 +1,11 @@
 ---
 project: living-literature
 merged_baseline: slice-007-wan-2.2-i2v-a14b-motion-scout-complete-rejected
-active_slice: none
-next_slice: slice-008-corrected-first-last-motion-scout
+active_slice: slice-008-corrected-first-last-motion-scout
+next_slice: slice-008-one-bounded-inference-after-next-session-prompt
 postponed_slice: slice-004-rights-ledger-foundation
-active_risks: ["production-model-not-accepted", "wan2.2-corrected-motion-and-full-envelope-unmeasured", "parallel-inference-out-of-scope"]
-verification_reality: ["wan-14b-local-offline-byte-identical", "wan-14b-motion-gates-failed", "wan2.2-i2v-bf16-benchmark-candidate", "source-still-d-frame-48-pinned", "ltx-2.5-local-apple-route-deferred", "slice-006-no-inference", "slice-007-technical-pass-motion-rejected"]
+active_risks: ["production-model-not-accepted", "wan2.2-first-last-conditioning-unproven", "parallel-inference-out-of-scope"]
+verification_reality: ["wan-14b-local-offline-byte-identical", "wan-14b-motion-gates-failed", "wan2.2-i2v-bf16-benchmark-candidate", "ltx-2.5-local-apple-route-deferred", "slice-007-technical-pass-motion-rejected", "slice-008-anchors-and-prompts-approved-no-inference"]
 authoritative_since: 2026-09-05
 ---
 
@@ -16,8 +16,9 @@ authoritative_since: 2026-09-05
 - Slice 005 proved local/offline Wan2.1 T2V 14B execution, but motion failed. Slice 007 passed Wan2.2 I2V-A14B technical checks, but reverse travel, wind/water causality, and speed failures rejected motion.
 
 ## Active Slice
-- No slice is active. Slice 007 authorizes no further inference and Wan2.2 is not accepted for production.
-- Next is `slice-008-corrected-first-last-motion-scout`: internal-only anchor approval first, then separate pre-inference approval.
+- Slice 008 anchors and prompts are approved. No video-model inference is authorized in this session.
+- The pinned direct Wan CLI supports experimental A14B `--last-image`; the generic wrapper does not expose it.
+- Pasting the prepared next-session prompt authorizes one sequential scout after renewed configuration, inventory, and host-safety checks.
 
 ## Active Risks
 - No production model is accepted; Wan2.2 full-run resources and quality remain unmeasured.

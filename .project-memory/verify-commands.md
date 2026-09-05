@@ -1,6 +1,6 @@
 ---
 kind: verification-commands
-version: 8
+version: 9
 ---
 
 # Verification Commands
@@ -44,6 +44,10 @@ version: 8
 - `.venv/bin/python scripts/verify-slice-007.py --allow-pending-review` after technical completion and before owner motion review
 - `.venv/bin/python scripts/verify-slice-007.py` after owner review; a failed review may leave unnecessary gates as `not_assessed` but must record at least one explicit failure
 
+## Slice 008 Corrected First/Last Motion Scout
+- `.venv/bin/python scripts/verify-slice-008.py` after anchor and prompt approval; this checks ignored anchor hashes, frozen configuration, current-session no-inference boundary, and direct Wan CLI `--last-image` support without running inference
+- No Slice 008 inference command is registered in the preparation branch; pasting the approved next-session prompt authorizes implementation and exactly one run after renewed preflight
+
 ## Lockfile Recreation
 - `recreate_dir="$(mktemp -d /private/tmp/living-literature-lock.XXXXXX)"; UV_CACHE_DIR=.cache/uv UV_PYTHON_INSTALL_DIR=.python UV_PROJECT_ENVIRONMENT="$recreate_dir/.venv" uv sync --frozen --offline`
 
@@ -61,3 +65,4 @@ version: 8
 - Slice 005 stores new weights under `~/models/huggingface/hub`; `LIVING_LITERATURE_MODEL_STORE` may override that location explicitly.
 - Slice 006 is documentation and benchmark design only. Its verifier reads the existing ignored Slice 005 videos and ignored Slice 006 candidate stills; it performs no download or inference.
 - Slice 007 permits one local-files-only scout after the exact runtime, model inventory, source still, host safety gates, and committed configuration pass. It does not permit a duplicate, tuning, or full render.
+- Slice 008 preparation permits no inference. Its two-anchor route must use the direct `mlxgen-generate-wan` executable because the generic wrapper does not expose `--last-image`.
