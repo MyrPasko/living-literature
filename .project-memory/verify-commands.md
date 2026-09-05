@@ -1,6 +1,6 @@
 ---
 kind: verification-commands
-version: 11
+version: 12
 ---
 
 # Verification Commands
@@ -57,6 +57,13 @@ version: 11
 - `./scripts/run-slice-009-full-render.sh` exactly once; the runner repeats Slice 009 and Slice 007 preflights, creates a durable marker before launch, and refuses an existing marker or output
 - `.venv/bin/python scripts/verify-slice-009.py` after the pre-denoise resolution-contract rejection; a successful future route would instead use `--allow-pending-review` before owner review
 
+## Slice 010 Wan2.2 Exact First/Last Full Render
+- `.venv/bin/python scripts/verify-slice-010.py --configuration-only` before committing the frozen exact-resize configuration
+- `.venv/bin/python scripts/verify-slice-010.py --preflight` after the exact configuration is committed and immediately before the single authorized launch
+- `./scripts/run-slice-010-exact-full-render.sh` exactly once; the runner repeats Slice 010 and Slice 007 preflights and creates a new durable marker before launch
+- `.venv/bin/python scripts/verify-slice-010.py --allow-pending-review` after technical completion and before owner motion review
+- `.venv/bin/python scripts/verify-slice-010.py` after all twelve owner motion verdicts are recorded
+
 ## Lockfile Recreation
 - `recreate_dir="$(mktemp -d /private/tmp/living-literature-lock.XXXXXX)"; UV_CACHE_DIR=.cache/uv UV_PYTHON_INSTALL_DIR=.python UV_PROJECT_ENVIRONMENT="$recreate_dir/.venv" uv sync --frozen --offline`
 
@@ -77,3 +84,4 @@ version: 11
 - Slice 008’s two-anchor route must use the direct `mlxgen-generate-wan` executable because the generic wrapper does not expose `--last-image`.
 - Slice 008 execution permits exactly one local-files-only first/last-frame scout after renewed checks. It authorizes no retry, tuning, duplicate, full render, parallel inference, publication, or automatic Memory Core promotion.
 - Slice 009 stopped before denoising because `source-aspect` resolved 832×480 to 848×480. Its marker remains, no video exists, and no corrected launch or retry is authorized.
+- Slice 010 changes only the canvas policy to `exact-resize` and permits one local-files-only 832×480 launch with a new marker. It authorizes no retry, tuning, offline duplicate, parallel inference, publication, production acceptance, or automatic Memory Core promotion.

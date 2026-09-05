@@ -1,6 +1,6 @@
 ---
 kind: docs-index
-version: 15
+version: 16
 ---
 
 # Docs Index
@@ -42,6 +42,8 @@ version: 15
 - `docs/slice-009-wan2.2-first-last-full-render.md` for the exact Wan2.1-to-Wan2.2 parameter mapping, one-attempt authorization, safety boundary, and owner review gate.
 - `benchmarks/slice-009-wan2.2-first-last-full-render.json` for the frozen anchors, prompts, model/runtime identities, BF16 parameters, and attempt policy.
 - `manifests/benchmarks/slice-009-wan2.2-first-last-full-render-results.json` and `docs/implementation-results/slice-009-wan2.2-first-last-full-render.md` after the attempt for measured technical, resource, media, and review evidence.
+- `docs/slice-010-wan2.2-exact-first-last-full-render.md` and `benchmarks/slice-010-wan2.2-exact-first-last-full-render.json` for the exact-resize correction, preserved full-render parameters, new one-attempt identity, and safety gate.
+- `manifests/benchmarks/slice-010-wan2.2-exact-first-last-full-render-results.json` and `docs/implementation-results/slice-010-wan2.2-exact-first-last-full-render.md` after execution for measured technical and owner-review evidence.
 
 ## Retrieval Rule
 - Add only version-specific, non-obvious documentation pointers that the worker cannot recover reliably from code and config alone.
