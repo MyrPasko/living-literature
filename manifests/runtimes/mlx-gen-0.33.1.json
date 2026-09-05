@@ -1,0 +1,18 @@
+{
+  "runtime": "mlx-gen",
+  "version": "0.33.1",
+  "status": "planned",
+  "source_repository": "lpalbou/mlx-gen",
+  "source_commit": "23cee803f10aacdf943a9565f7cd67c25c825080",
+  "wheel": "mlx_gen-0.33.1-py3-none-any.whl",
+  "wheel_sha256": "1a19e6510a166cbe0fe4975146813fb61adf98f0e073abb4e63f27f012882d0a",
+  "license": "MIT",
+  "python": "3.12",
+  "lockfile": "runtimes/mlx-gen-0.33.1/uv.lock",
+  "environment_root": "~/models/living-literature/runtimes/mlx-gen-0.33.1",
+  "environment_policy": "isolated-external-runtime",
+  "installed": false,
+  "installed_at_utc": null,
+  "installed_packages": null,
+  "metal_available": null
+}
