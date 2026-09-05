@@ -1,0 +1,82 @@
+{
+  "benchmark_id": "slice-010-wan2.2-exact-first-last-full-render",
+  "run_id": "local-files-only-exact-first-last-full-render-seed-42",
+  "status": "pending-owner-motion-review",
+  "technical_verdict": "pass",
+  "disposition": "pending",
+  "generation_attempts": 1,
+  "model_revision": "ef2a0bfe5b4ca7edb84c93f1675edb1a8bfe7d60",
+  "runtime_version": "0.33.1",
+  "first_anchor_sha256": "9441f1a783f42ef1e7b605f0c4c6981462e071c46f49c7607a4ba6ab9533ffde",
+  "last_anchor_sha256": "6c0f3d2ee62e4ff563a1fc02d6e42a3f255bc75d3bed8fa6210904f862ef85ce",
+  "execution": {
+    "git_commit": "0938014460f187c0169bb86f742d03f248b4523d",
+    "started_at_utc": "2026-09-05T13:32:09Z",
+    "ended_at_utc": "2026-09-05T15:34:43Z",
+    "runtime_denoise_event_count": 50,
+    "sampled_loop_denoise_event_count": 50,
+    "safety_stop": "none",
+    "network_mode": "local-files-only"
+  },
+  "wrapper_duration_seconds": 7354,
+  "runtime_generation_time_seconds": 7293.22,
+  "runtime_save_time_seconds": 45.39,
+  "runtime_total_generation_time_seconds": 7338.61,
+  "output": {
+    "path": "outputs/slice-010/wan2.2-i2v-a14b-exact-first-last-full-render-seed-42.mp4",
+    "sha256": "de81c77df5cbf6d9d4b25ecc2012f9db130e7ec853671cda947b066b53995205",
+    "size_bytes": 1262186,
+    "metadata_sha256": "e30f4c495d5d52d33aff4f86a52f91f7db195d0e8a874aa64833aec7891e9568",
+    "codec": "h264",
+    "pixel_format": "yuv420p",
+    "width": 832,
+    "height": 480,
+    "frames": 81,
+    "fps": 16,
+    "duration_seconds": 5.0625,
+    "full_decode": "pass"
+  },
+  "resources": {
+    "sample_count": 487,
+    "minimum_memory_free_percent": 89,
+    "maximum_swap_mb": 0.0,
+    "maximum_sampled_process_tree_rss_kb": 29139856,
+    "minimum_repo_disk_available_kb": 7361894656,
+    "minimum_model_disk_available_kb": 7361894656,
+    "mlx_peak_memory_bytes": 37249511812,
+    "process_peak_rss_bytes": 29818617856,
+    "darwin_peak_physical_footprint_bytes": 39499554168,
+    "thermal_warning_observed": false,
+    "performance_warning_observed": false
+  },
+  "review_evidence": {
+    "contact_sheet_path": "outputs/slice-010/review/contact-sheet.png",
+    "contact_sheet_sha256": "87158a7f9601488008e260d708201a33a78b78c088a3dbd4831b64e0b1e1d2ef",
+    "contact_sheet_size_bytes": 706482,
+    "contact_sheet_width": 1280,
+    "contact_sheet_height": 504,
+    "sampled_frame_numbers_zero_based": [0, 16, 32, 48, 64, 80]
+  },
+  "owner_motion_review": {
+    "status": "pending",
+    "reviewed_at_utc": null,
+    "notes": null,
+    "hard_gates": {
+      "bow_and_submerged_ram_remain_right": "pending",
+      "stern_and_steering_oar_remain_left": "pending",
+      "ship_moves_continuously_left_to_right_bow_first": "pending",
+      "total_displacement_matches_anchor_distance": "pending",
+      "speed_is_slow_smooth_and_uniform": "pending",
+      "wind_reads_strictly_left_to_right": "pending",
+      "sail_bows_right_without_deformation": "pending",
+      "wavelets_remain_visible_across_entire_sea": "pending",
+      "small_bow_wave_begins_at_ram": "pending",
+      "low_energy_wake_starts_only_behind_stern": "pending",
+      "ship_horizon_and_camera_remain_stable": "pending",
+      "no_text_watermark_modern_object_or_major_collapse": "pending"
+    }
+  },
+  "rights_status": "internal-evaluation-only-unresolved-user-reference-lineage",
+  "production_model_accepted": false,
+  "publication_authorized": false
+}

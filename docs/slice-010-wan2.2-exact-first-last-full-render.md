@@ -1,8 +1,8 @@
 ---
 project: Living Literature
 document: wan2.2-exact-first-last-full-render
-status: inference-authorized-frozen
-verified: pending
+status: pending-owner-motion-review
+verified: 2026-09-05
 slice: slice-010-wan2.2-exact-first-last-full-render
 ---
 
@@ -47,3 +47,7 @@ No retry, tuning, alternate seed/sampler, adapter, offline duplicate, parallel/c
 - Write scope: Slice 010 benchmark, runner, verifier, results and documentation; repo-canon state, verification registry, docs index; generated workflow artifacts; ignored Slice 010 output and telemetry.
 - Verification: frozen-configuration check, host and historical inventory preflight, runtime telemetry, exact media probe, full decode, hashes, metadata, contact sheet, and twelve-gate owner review.
 - Success: exactly one safe 832×480 technical result ready for owner review.
+
+## Technical Execution
+
+The single launch completed normally in 7,354 seconds. It produced an exact 832×480, 81-frame H.264 video at 16 fps with SHA-256 `de81c77df5cbf6d9d4b25ecc2012f9db130e7ec853671cda947b066b53995205`. Full decode passed, swap remained zero, no thermal/performance warning occurred, and the result now awaits owner motion review.
